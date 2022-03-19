@@ -9,7 +9,7 @@
 @endif
 <div class="row">
     <div class="col-sm-12 text-center m-y p-2" style="font-size: 20px;font-weight: bold;">
-        اجمالي الناخبيت:  <span id="total_count"></span>
+        اجمالي الناخبين:  <span id="total_count"></span>
     </div>
 </div>
 <div id="grid" class="p-2" style="font-size:11px"></div>

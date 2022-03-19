@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ElectorsImport;
 use App\Models\Electors;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,9 @@ class HomeController extends Controller
     
     public function index()
     {
+       // dd(Hash::make('Admin@2445!'));
         return view('home');
+       
     }
 
     public function getTotalByDistrict(Request $request){
