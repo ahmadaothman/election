@@ -31,7 +31,7 @@ class CreateElectorsTable extends Migration
             $table->string('election_country', 200);
             $table->string('side', 100)->nullable()->default('text');
             $table->string('telephone', 32)->nullable()->default('text');
-            $table->text('note')->nullable()->default('');
+            $table->text('note')->nullable();
             $table->boolean('elected_last_election')->nullable()->default(false);
             $table->timestamps();
         });
