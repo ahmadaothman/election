@@ -15,12 +15,15 @@ class ElectorsController extends Controller
 
     public function index()
     {
-        return view('electors');
+        $data = array();
+        $data['districts'] = Electors::distinct()->get(['district']);
+
+        return view('electors',$data);
     }
 
-    public function get()
+    public function get(Request $request)
     {
-        return Electors::get();
+        return Electors::where('district',$request->get('district'))->get();
     }
 
     public function saveElectionCenter(Request $request){
