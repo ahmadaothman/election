@@ -59,7 +59,7 @@
                         </li>
                     </ul>
                     @endif
-
+                    <!--a->
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav m-0">
                         <!-- Authentication Links -->
