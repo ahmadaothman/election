@@ -17,7 +17,7 @@ class CreateCenters extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('area', 100);
-            $table->text('description')->nullable()->default('');
+            $table->text('description');
             $table->timestamps();
         });
     }
