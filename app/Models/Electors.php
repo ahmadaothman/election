@@ -26,7 +26,7 @@ class Electors extends Model
             return '';
         }else{
             $concadidates = Concadidates::where('id',$this->preferential_vote)->first();
-            return $concadidates->name;
+            return $concadidates->name ? $concadidates->name : '';
         }
     }
 }
