@@ -26,12 +26,14 @@ class Electors extends Model
             return '';
         }else{
             $concadidates = Concadidates::where('id',$this->preferential_vote)->first();
-            try {
-                return $concadidates->name != null ? $concadidates->name : '';
-             } catch (Throwable $e) {
-          
-                 return '';
-             }
+            if($concadidates){
+                try {
+                    return $concadidates->name != null ? $concadidates->name : '';
+                 } catch (Throwable $e) {
+              
+                     return '';
+                 }
+            }
             
         }
     }
