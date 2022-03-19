@@ -141,11 +141,6 @@
                 allowEditing: false
             },
             {
-                caption: 'المذهب',
-                dataField:'doctrine',
-                allowEditing: false
-            },
-            {
                 caption: 'مركز الاقتراع',
                 dataField:'election_center'
             },
