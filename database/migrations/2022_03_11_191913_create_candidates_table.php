@@ -20,7 +20,7 @@ class CreateCandidatesTable extends Migration
             $table->string('district');
             $table->string('log', 100);
             $table->integer('list_id');
-            $table->text('note')->nullable()->default('');
+            $table->text('note');
             $table->timestamps();
         });
     }
