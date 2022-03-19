@@ -9,7 +9,7 @@ class AddPreferentialVoteToElectors extends Migration
     public function up()
     {
         Schema::table('electors', function (Blueprint $table) {
-            $table->text('preferential_vote')->nullable()->default('');
+            $table->text('preferential_vote');
         });
     }
 
