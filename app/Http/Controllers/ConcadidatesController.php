@@ -34,7 +34,7 @@ class ConcadidatesController extends Controller
             if($validated){
                 Concadidates::create([
                     'name'      => $request->input('name'),
-                    'district'  => $request->input('district'),
+                    'district'  => $request->input('district') ? $request->input('district') : '',
                     'zone'      => '',
                     'log'       => $request->input('log') ? $request->input('log') : '',
                     'list_id'   => $request->input('list_id') ? $request->input('list_id') : 0,
