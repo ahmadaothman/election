@@ -141,6 +141,11 @@
                 allowEditing: false
             },
             {
+                caption: 'السجل',
+                dataField:'log',
+                allowEditing: false
+            },
+            {
                 caption: 'مركز الاقتراع',
                 dataField:'election_center'
             },
