@@ -30,7 +30,7 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->district }}</td>
                     <td>{{ $item->log }}</td>
-                    <td>{{ $item->List->name }}</td>
+                    <td>{{ is_null($item->List->name) ? '' : $item->List->name }}</td>
                     <td>{{ $item->TotalVotes }}</td>
                     <td>{{ $item->note }}</td>
                     <td><a href="/Concadidates/edit/{{ $item->id }}">تعديل</td>
