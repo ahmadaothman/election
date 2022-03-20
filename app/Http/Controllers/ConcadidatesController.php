@@ -64,17 +64,15 @@ class ConcadidatesController extends Controller
         if ($request->isMethod('post')) {
             $validated = $request->validate([
                 'name' => 'required|max:255',
-                'district' => 'required',
-                
             ]);
 
             if($validated){
                 Concadidates::where("id",$id)->update([
                  'name'      => $request->input('name'),
-                    'district'  => $request->input('district'),
+                    'district'  => $request->input('district') ? $request->input('district') : '',
                     'zone'      => '',
                     'log'       => $request->input('log') ? $request->input('log') : '',
-                    'list_id'   => $request->input('list_id'),
+                    'list_id'   => $request->input('list_id') ? $request->input('list_id') : '',
                     'note'      => $request->input('note') ?  $request->input('note') : '',
                 ]);
                 return redirect()->route('concadidates_list')->with('status', 'تم تعديل معلومات المرشح!');
