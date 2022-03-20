@@ -166,10 +166,6 @@
                 allowEditing: false
             },
             {
-                caption: 'الصوت التفضيلي',
-                dataField:'SideDetails'
-            },
-            {
                 caption: 'اقترع العام الماضي',
                 dataField:'elected_last_election'
             },
