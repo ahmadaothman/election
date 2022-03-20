@@ -28,9 +28,7 @@ class ConcadidatesController extends Controller
 
         if ($request->isMethod('post')) {
             $validated = $request->validate([
-                'name' => 'required|unique:candidates|max:255',
-                'district' => 'required',
-                
+                'name' => 'required|unique:candidates|max:255',                
             ]);
 
             if($validated){
@@ -39,7 +37,7 @@ class ConcadidatesController extends Controller
                     'district'  => $request->input('district'),
                     'zone'      => '',
                     'log'       => $request->input('log') ? $request->input('log') : '',
-                    'list_id'   => $request->input('list_id'),
+                    'list_id'   => $request->input('list_id') ? $request->input('list_id') : 0,
                     'note'      => $request->input('note') ?  $request->input('note') : '',
                 ]);
                 return redirect()->route('concadidates_list')->with('status', 'تمت اضافة مرشح جديد!');
