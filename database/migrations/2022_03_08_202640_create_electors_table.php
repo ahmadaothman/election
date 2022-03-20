@@ -26,7 +26,7 @@ class CreateElectorsTable extends Migration
             $table->string('log_doctrine', 100);
             $table->string('district', 100);
             $table->string('election_country', 200);
-            $table->string('side', 100)->nullable()->default('text');
+           // $table->string('side', 100)->nullable()->default('text');
             $table->string('telephone', 32)->nullable()->default('text');
             $table->text('note');
             $table->boolean('elected_last_election')->nullable()->default(false);
