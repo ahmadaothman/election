@@ -37,7 +37,7 @@ class ConcadidatesController extends Controller
                     'district'  => $request->input('district') ? $request->input('district') : '',
                     'zone'      => '',
                     'log'       => $request->input('log') ? $request->input('log') : '',
-                    'list_id'   => $request->input('list_id') ? $request->input('list_id') : 0,
+                    'list_id'   => $request->input('list_id') ? $request->input('list_id') : '0',
                     'note'      => $request->input('note') ?  $request->input('note') : '',
                 ]);
                 return redirect()->route('concadidates_list')->with('status', 'تمت اضافة مرشح جديد!');
@@ -72,7 +72,7 @@ class ConcadidatesController extends Controller
                     'district'  => $request->input('district') ? $request->input('district') : '',
                     'zone'      => '',
                     'log'       => $request->input('log') ? $request->input('log') : '',
-                    'list_id'   => $request->input('list_id') ? $request->input('list_id') : '',
+                    'list_id'   => $request->input('list_id') ? $request->input('list_id') : '0',
                     'note'      => $request->input('note') ?  $request->input('note') : '',
                 ]);
                 return redirect()->route('concadidates_list')->with('status', 'تم تعديل معلومات المرشح!');
