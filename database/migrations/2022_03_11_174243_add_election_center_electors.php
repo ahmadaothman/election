@@ -14,7 +14,7 @@ class AddElectionCenterElectors extends Migration
     public function up()
     {
         Schema::table('electors', function (Blueprint $table) {
-            $table->string('election_center')->nullable()->default('');
+            $table->string('election_center',100)->nullable()->default('');
         });
     }
 
