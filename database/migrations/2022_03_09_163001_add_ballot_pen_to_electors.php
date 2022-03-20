@@ -14,7 +14,7 @@ class AddBallotPenToElectors extends Migration
     public function up()
     {
         Schema::table('electors', function (Blueprint $table) {
-            $table->string('ballot_pen', 100)->nullable()->default('');
+            $table->string('ballot_pen', 10)->nullable()->default('');
         });
     }
 

@@ -11,6 +11,7 @@ class Electors extends Model
 
     protected $table = 'electors';
     protected $guarded = [];
+    public $timestamps = false;
    // protected $appends = array('SideDetails');
 
    /* public function getFullNameAttribute(){
