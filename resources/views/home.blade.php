@@ -2,22 +2,28 @@
 
 @section('content')
 <div class="container ">
-    <div class="row">
-        <div class="col-md-6">
-            <div id="total_by_doctrine"></div>
-        </div>
-        <div class="col-md-6">
-            <div id="total_by_sex"></div>
-        </div>
-      
-        <div class="col-md-12">
-            <div id="total_by_district"></div>
-        </div>
-        <div class="col-md-12">
-            <div id="total_by_country"></div>
-        </div>
-   
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1> الماكنة الانتخابية للنائب</h1>
     </div>
+  </div>
+  <hr>
+  <div class="row">
+      <div class="col-md-6">
+          <div id="total_by_doctrine"></div>
+      </div>
+      <div class="col-md-6">
+          <div id="total_by_sex"></div>
+      </div>
+    
+      <div class="col-md-12">
+          <div id="total_by_district"></div>
+      </div>
+      <div class="col-md-12">
+          <div id="total_by_country"></div>
+      </div>
+  
+  </div>
 </div>
 <!--data by district-->
 <script type="text/javascript">

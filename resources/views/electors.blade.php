@@ -296,10 +296,7 @@
             toolbar.option('items', items);  
         }
     } 
-
 </script>
-
-
 <script type="text/javascript">
     $('#area').on('change', function() {
        
@@ -309,7 +306,5 @@
       
         dataGrid.option("dataSource", url);
     });
-    
 </script>
-
 @endsection
