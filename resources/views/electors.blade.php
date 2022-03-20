@@ -116,12 +116,15 @@
             
             {
                 caption: 'الاسم',
-             //   dataField:'FullName',
+                dataField:'FullName',
                 width:250,
                 allowEditing: false,
-                calculateCellValue(data) {
-                    return data.firstname + ' ' + data.fathername + ' ' + data.lastname
-                }
+                allowFiltering: true,
+            /*    calculateCellValue(e) {
+                    let { firstname, fathername, lastname} = e;
+                    return ` ${firstname} ${fathername} ${lastname}`;
+                 //   return data.firstname + ' ' + data.fathername + ' ' + data.lastname
+                }*/
             },
             {
                 caption: 'إسم الأم',

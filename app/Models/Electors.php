@@ -12,11 +12,11 @@ class Electors extends Model
     protected $table = 'electors';
     protected $guarded = [];
     public $timestamps = false;
-   // protected $appends = array('SideDetails');
+   protected $appends = array('FullName');
 
-   /* public function getFullNameAttribute(){
+   public function getFullNameAttribute(){
         return $this->firstname . " " . $this->fathername . " " . $this->lastname;  
-    }*/
+    }
 
    /* public function getSideDetailsAttribute(){
         if($this->preferential_vote == 'none'){

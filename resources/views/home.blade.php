@@ -4,7 +4,13 @@
 <div class="container ">
   <div class="row">
     <div class="col-md-12 text-center">
-      <h1> الماكنة الانتخابية للنائب</h1>
+      <h1> الماكنة الانتخابية للنائب سامي فتفت</h1>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h2>اجمالي الناخبين {{ $count }} ناخب</h2>
     </div>
   </div>
   <hr>

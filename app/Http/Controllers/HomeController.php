@@ -25,7 +25,11 @@ class HomeController extends Controller
     public function index()
     {
        // dd(Hash::make('Admin@2445!'));
-        return view('home');
+        $count = Electors::count();   
+        $count = number_format($count);
+        $data = array();
+        $data['count'] = $count;
+        return view('home',$data);
        
     }
 
