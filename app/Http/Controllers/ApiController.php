@@ -99,6 +99,6 @@ class ApiController extends Controller
 
             $data_by_towns[$town->town] = $results;
         }
-        dd($data_by_towns);
+        return $data_by_towns;
     }
 }
