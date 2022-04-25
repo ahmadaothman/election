@@ -26,6 +26,8 @@ Route::get('/data/getTotalByDistrict', [App\Http\Controllers\HomeController::cla
 Route::get('/data/getTotalBydoctrine', [App\Http\Controllers\HomeController::class, 'getTotalBydoctrine'])->name('getTotalBydoctrine');
 Route::get('/data/getTotalBySex', [App\Http\Controllers\HomeController::class, 'getTotalBySex'])->name('getTotalBySex');
 Route::get('/data/getTotalByCountry', [App\Http\Controllers\HomeController::class, 'getTotalByCountry'])->name('getTotalByCountry');
+Route::get('/data/getDistrictCenters', [App\Http\Controllers\HomeController::class, 'getDistrictCenters'])->name('getDistrictCenters');
+
 
 
 Route::get('/electors/get', [App\Http\Controllers\ElectorsController::class, 'get'])->name('get_electors');
@@ -47,3 +49,13 @@ Route::post('/Concadidates/add', [App\Http\Controllers\ConcadidatesController::c
 Route::get('/Concadidates/add', [App\Http\Controllers\ConcadidatesController::class, 'add'])->name('add_concadidate');
 Route::post('/Concadidates/edit/{id}', [App\Http\Controllers\ConcadidatesController::class, 'edit'])->name('edit_concadidate');
 Route::get('/Concadidates/edit/{id}', [App\Http\Controllers\ConcadidatesController::class, 'edit'])->name('edit_concadidate');
+
+Route::get('/UsersLists', [App\Http\Controllers\UsersController::class, 'list'])->name('users_list');
+Route::post('/Users/add', [App\Http\Controllers\UsersController::class, 'add'])->name('add_user');
+Route::get('/Users/add', [App\Http\Controllers\UsersController::class, 'add'])->name('add_user');
+Route::post('/Users/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('edit_user');
+Route::get('/Users/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('edit_user');
+
+Route::get('/api/voters', [App\Http\Controllers\ApiController::class, 'voters'])->name('voters_api');
+Route::get('/api/votersByTowns', [App\Http\Controllers\ApiController::class, 'votersByTowns'])->name('votersByTowns_api');
+

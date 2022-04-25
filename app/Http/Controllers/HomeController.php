@@ -52,4 +52,10 @@ class HomeController extends Controller
         $data = DB::select("SELECT `election_country` as الدولة,COUNT(*) as المجموع FROM electors GROUP BY election_country");
         return $data;
     }
+
+    public function getDistrictCenters(Request $request){
+        $data = DB::select("SELECT DISTINCT election_center FROM electors WHERE district='" . $request->get('district') . "' AND election_center!=''");
+        return $data;
+
+    }
 }

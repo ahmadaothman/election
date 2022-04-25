@@ -55,7 +55,7 @@
                             <a class="nav-link mx-4" href="#">المراكز الانتخابية</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link mx-4" href="#">المندوبين</a>
+                            <a class="nav-link mx-4" href="/UsersLists">المندوبين</a>
                         </li>
                     </ul>
                     @endif
