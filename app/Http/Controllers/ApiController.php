@@ -121,6 +121,14 @@ class ApiController extends Controller
     }
 
     public function getVotedByLogDoctrine(Request $request){
+        $header = $request->header('Authorization');
+        if(!$header || $header != 'gANm5wFB5Z5ljjPPeK0milkOaZUPuVTY'){
+            return Response::json(array(
+                'code'      =>  401,
+                'message'   =>  'Unauthorized'
+            ), 401);
+        }
+        
         $results = array();
 
         $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='سني' AND done=1";
