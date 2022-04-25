@@ -20,7 +20,7 @@ class ApiController extends Controller
                 'message'   =>  'Unauthorized'
             ), 401);
         }
-        
+
         $results = array();
 
         $sql = "SELECT COUNT(*) AS total FROM electors";
@@ -118,5 +118,51 @@ class ApiController extends Controller
             $data_by_towns[$town->town] = $results;
         }
         return $data_by_towns;
+    }
+
+    public function getVotedByLogDoctrine(Request $request){
+        $results = array();
+
+        $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='سني' AND done=1";
+
+        if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
+            $sql .= " AND (election_country IS NULL OR election_country = '')";
+        }
+
+        $data = DB::select($sql);
+
+        $results['سني'] = $data[0]->total;
+
+        $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='روم ارثوذكس' AND done=1";
+
+        if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
+            $sql .= " AND (election_country IS NULL OR election_country = '')";
+        }
+
+        $data = DB::select($sql);
+
+        $results['روم ارثوذكس'] = $data[0]->total;
+
+        $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='ماروني' AND done=1";
+
+        if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
+            $sql .= " AND (election_country IS NULL OR election_country = '')";
+        }
+
+        $data = DB::select($sql);
+
+        $results['ماروني'] = $data[0]->total;
+
+        $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='شيعي' AND done=1";
+
+        if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
+            $sql .= " AND (election_country IS NULL OR election_country = '')";
+        }
+
+        $data = DB::select($sql);
+
+        $results['شيعي'] = $data[0]->total;
+
+        return $results;
     }
 }

@@ -58,4 +58,5 @@ Route::get('/Users/edit/{id}', [App\Http\Controllers\UsersController::class, 'ed
 
 Route::get('/api/voters', [App\Http\Controllers\ApiController::class, 'voters'])->name('voters_api');
 Route::get('/api/votersByTowns', [App\Http\Controllers\ApiController::class, 'votersByTowns'])->name('votersByTowns_api');
+Route::get('/api/votersByDoctrine', [App\Http\Controllers\ApiController::class, 'getVotedByLogDoctrine'])->name('getVotedByLogDoctrine_api');
 
