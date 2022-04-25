@@ -5,11 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Electors;
 use Illuminate\Support\Facades\DB;
-
+use Response;
 class ApiController extends Controller
 {
+
+   
+
     public function voters(Request $request){
 
+        $header = $request->header('Authorization');
+        if(!$header || $header != 'gANm5wFB5Z5ljjPPeK0milkOaZUPuVTY'){
+            return Response::json(array(
+                'code'      =>  401,
+                'message'   =>  'Unauthorized'
+            ), 401);
+        }
+        
         $results = array();
 
         $sql = "SELECT COUNT(*) AS total FROM electors";
@@ -56,6 +67,13 @@ class ApiController extends Controller
     }
 
     public function votersByTowns(Request $request){
+        $header = $request->header('Authorization');
+        if(!$header || $header != 'gANm5wFB5Z5ljjPPeK0milkOaZUPuVTY'){
+            return Response::json(array(
+                'code'      =>  401,
+                'message'   =>  'Unauthorized'
+            ), 401);
+        }
         $sql = "SELECT DISTINCT (district) AS town FROM electors";
         $data = DB::select($sql);
 
