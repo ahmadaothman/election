@@ -27,7 +27,7 @@ Route::get('/data/getTotalBydoctrine', [App\Http\Controllers\HomeController::cla
 Route::get('/data/getTotalBySex', [App\Http\Controllers\HomeController::class, 'getTotalBySex'])->name('getTotalBySex');
 Route::get('/data/getTotalByCountry', [App\Http\Controllers\HomeController::class, 'getTotalByCountry'])->name('getTotalByCountry');
 Route::get('/data/getDistrictCenters', [App\Http\Controllers\HomeController::class, 'getDistrictCenters'])->name('getDistrictCenters');
-
+Route::get('/data/BallotPens', [App\Http\Controllers\HomeController::class, 'getCenterBallotPens'])->name('getCenterBallotPens');
 
 
 Route::get('/electors/get', [App\Http\Controllers\ElectorsController::class, 'get'])->name('get_electors');

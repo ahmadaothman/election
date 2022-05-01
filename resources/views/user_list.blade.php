@@ -17,14 +17,26 @@
         <thead>
             <tr>
                 <th>اسم المندوب</th>
-                <th>البلدة</th>
-                <th>البريد الالكتروني</th>
                 <th>الهاتف</th>
-                <th>الصفة</th>
+                <th>البريد الالكتروني</th>
+                <th>البلدة</th>
+                <th>مركز الاقتراع</th>
+                <th>القلم</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-       
+            @foreach ($users as $user)
+                <tr>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->telephone}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->district}}</td>
+                    <td>{{$user->election_center}}</td>
+                    <td>{{$user->ballot_pen}}</td>
+                    <td><a href="/Users/edit/{{$user->id}}">تعديل</a></td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

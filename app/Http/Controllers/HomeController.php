@@ -58,4 +58,10 @@ class HomeController extends Controller
         return $data;
 
     }
+
+    public function getCenterBallotPens(Request $request){
+        $data = DB::select("SELECT DISTINCT ballot_pen FROM electors WHERE election_center='" . $request->get('election_center') . "' AND district='" . $request->get('district')  . "' ORDER BY ballot_pen ASC");
+        return $data;
+
+    }
 }
