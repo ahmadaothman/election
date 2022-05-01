@@ -51,8 +51,26 @@
 </script>
 <script type="text/javascript">
     var url = '/electors/get?district='+ $('#area').val();
+
+    var store = new DevExpress.data.CustomStore({
+        key: "id",
+        load: function (loadOptions) {
+            return $.getJSON(url)
+                    .fail(function() { throw "Data loading error" });
+        },
+        insert: function (values) {
+            // ...
+        },
+        update: function (key, values) {
+
+        },
+        remove: function (key) {
+            // ...
+        }
+    });
+
     var dataGrid = $('#grid').dxDataGrid({
-        dataSource: url,
+        dataSource: store,
         keyExpr: 'id',
         filterRow: {
             visible: true,
@@ -70,7 +88,7 @@
         headerFilter: { visible: true },
         editing: {
             mode: 'batch',
-            allowUpdating: false,
+            allowUpdating: true,
             allowAdding: false,
             allowDeleting: false,
             selectTextOnEditStart: false,
@@ -113,11 +131,15 @@
                 width:50,
                 allowEditing: false
             },
-            
+            {
+                caption: 'الرقم الوهمي',
+                dataField:'virtual_number',
+                allowEditing: true
+            },
             {
                 caption: 'الاسم',
                 dataField:'FullName',
-                width:250,
+                width:220,
                 allowEditing: false,
                 allowFiltering: true,
             /*    calculateCellValue(e) {
@@ -143,12 +165,14 @@
             {
                 caption: 'الجنس',
                 dataField:'sex',
-                allowEditing: false
+                allowEditing: false,
+                width:60,
             },
             {
                 caption: 'السجل',
                 dataField:'log',
-                allowEditing: false
+                allowEditing: false,
+                width:60,
             },
             {
                 caption: 'مركز الاقتراع',
@@ -156,7 +180,8 @@
             },
             {
                 caption: 'القلم',
-                dataField:'ballot_pen'
+                dataField:'ballot_pen',
+                width:60,
             },
             {
                 caption: 'مذهب السجل',
@@ -167,14 +192,6 @@
                 caption: 'بلد الإقتراع',
                 dataField:'election_country',
                 allowEditing: false
-            },
-            {
-                caption: 'اقترع العام الماضي',
-                dataField:'elected_last_election'
-            },
-            {
-                caption: 'ملاحظة',
-                dataField:'note'
             },
             {
             type: "buttons",
@@ -210,7 +227,30 @@
             addCustomItem(toolbar);
 
             $('#total_count').html(e.component.totalCount().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-        }  
+        },
+     
+        onSaving: function(e) {
+
+            var data = []
+            $.each(e.changes,function(k,v){
+                var vall =  {
+                    id:v.key,
+                    value:v.data.virtual_number
+                }
+                data.push(vall)
+            })
+
+          
+          $.ajax({
+            type:'POST',
+            url:url,
+            data:{data:data},
+            success:function(data){
+                DevExpress.ui.notify('تم الحفظ', 'success', 2500);
+            }
+          })
+        },
+       
     }).dxDataGrid("instance");
 
   
@@ -302,12 +342,34 @@
 </script>
 <script type="text/javascript">
     $('#area').on('change', function() {
-       
+        var id = $(this).val();
+
+
         dataGrid.refresh();
         var url = '/electors/get?district='+ $(this).val();
 
-      
-        dataGrid.option("dataSource", url);
+        
+        var store = new DevExpress.data.CustomStore({
+            key: "id",
+            load: function (loadOptions) {
+                return $.getJSON(url)
+                        .fail(function() { throw "Data loading error" });
+            },
+            insert: function (values) {
+                // ...
+            },
+            update: function (key, values) {
+         
+            },
+            remove: function (key) {
+                // ...
+            }
+        });
+
+        dataGrid.option("dataSource", store);
+    
+
+
     });
 </script>
 @endsection

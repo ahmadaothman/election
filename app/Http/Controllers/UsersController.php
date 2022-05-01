@@ -69,6 +69,8 @@ class UsersController extends Controller
         $data['election_center'] = $user->election_center;
         $data['ballot_pen'] = $user->ballot_pen;
 
+        $data['id'] = $user->id;
+
         if($request->method() == 'POST'){
             $validation_data = [
                 'name'      =>  'required|min:4',
@@ -101,6 +103,11 @@ class UsersController extends Controller
         }
 
         return view('user_form',$data);
+    }
+
+    public function delete(Request $request,$id){
+        User::where('id',$id)->delete();
+        return redirect(route('users_list'))->with('status', 'Success: User delete!');
     }
 
    

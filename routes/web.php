@@ -31,6 +31,8 @@ Route::get('/data/BallotPens', [App\Http\Controllers\HomeController::class, 'get
 
 
 Route::get('/electors/get', [App\Http\Controllers\ElectorsController::class, 'get'])->name('get_electors');
+Route::post('/electors/get', [App\Http\Controllers\ElectorsController::class, 'get'])->name('get_electors');
+
 
 Route::get('/electors', [App\Http\Controllers\ElectorsController::class, 'index'])->name('electors');
 Route::get('/electors/edit/{id}', [App\Http\Controllers\ElectorsController::class, 'edit'])->name('edit_elector');
@@ -55,6 +57,7 @@ Route::post('/Users/add', [App\Http\Controllers\UsersController::class, 'add'])-
 Route::get('/Users/add', [App\Http\Controllers\UsersController::class, 'add'])->name('add_user');
 Route::post('/Users/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('edit_user');
 Route::get('/Users/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('edit_user');
+Route::get('/Users/delete/{id}', [App\Http\Controllers\UsersController::class, 'delete'])->name('delete_user');
 
 Route::get('/api/voters', [App\Http\Controllers\ApiController::class, 'voters'])->name('voters_api');
 Route::get('/api/votersByTowns', [App\Http\Controllers\ApiController::class, 'votersByTowns'])->name('votersByTowns_api');

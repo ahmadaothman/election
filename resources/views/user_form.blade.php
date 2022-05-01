@@ -3,9 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row mb-2">
-        <div class="col-sm-12 text-right">
+        <div class="col-sm-6 ">
            <h3>المندوب</h3>
         </div>
+        @if (isset($id))
+        <div class="col-sm-6" style="text-align: end !important">
+            <a href="/Users/delete/{{$id}}" class="text-danger"><h3>حذف</h3></a>
+        </div>
+        @endif
     </div>
 
     @error('name')

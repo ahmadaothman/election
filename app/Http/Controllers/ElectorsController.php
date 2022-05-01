@@ -23,6 +23,12 @@ class ElectorsController extends Controller
 
     public function get(Request $request)
     {
+        if($request->method() == 'POST'){
+            foreach($request->post('data') as $data){
+
+                Electors::where('id',$data['id'])->update(['virtual_number'=>$data['value']]);
+            }
+        }
         return Electors::where('district',$request->get('district'))->get();
     }
 
