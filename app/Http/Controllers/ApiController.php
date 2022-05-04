@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+ini_set('serialize_precision', 16);
 
 use Illuminate\Http\Request;
 use App\Models\Electors;
@@ -53,8 +54,8 @@ class ApiController extends Controller
 
         $results['total_did_not_vote'] = $data[0]->total;
 
-        $results['voted_percentage'] = $this->numberPrecision(100*$results['total_voted']/$results['total_electors'],4);
-        $results['did_not_voted_percentage'] = $this->numberPrecision(100*$results['total_did_not_vote']/$results['total_electors'],4);
+        $results['voted_percentage'] = $this->numberPrecision(100*$results['total_voted']/$results['total_electors'],2);
+        $results['did_not_voted_percentage'] = $this->numberPrecision(100*$results['total_did_not_vote']/$results['total_electors'],2);
         return $results;
 
     }
@@ -112,8 +113,8 @@ class ApiController extends Controller
 
             $results['total_did_not_vote'] = $data[0]->total;
 
-            $results['voted_percentage'] = $this->numberPrecision(100*$results['total_voted']/$results['total_electors'],4);
-            $results['did_not_voted_percentage'] = $this->numberPrecision(100*$results['total_did_not_vote']/$results['total_electors'],4);
+            $results['voted_percentage'] = $this->numberPrecision(100*$results['total_voted']/$results['total_electors'],2);
+            $results['did_not_voted_percentage'] = $this->numberPrecision(100*$results['total_did_not_vote']/$results['total_electors'],2);
 
             $data_by_towns[$town->town] = $results;
         }
@@ -175,6 +176,15 @@ class ApiController extends Controller
     }
 
     public function getVotersByCountries(Request $request){
+
+        $header = $request->header('Authorization');
+        if(!$header || $header != 'gANm5wFB5Z5ljjPPeK0milkOaZUPuVTY'){
+            return Response::json(array(
+                'code'      =>  401,
+                'message'   =>  'Unauthorized'
+            ), 401);
+        }
+        
         $results = array();
 
         $sql = "SELECT COUNT(*) AS total FROM electors WHERE election_country!=''";
