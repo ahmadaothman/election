@@ -210,7 +210,22 @@ class ApiController extends Controller
         $sql = "SELECT COUNT(*) AS total,election_center AS country FROM votes v WHERE v.is_country=1 GROUP BY v.election_center";
         $data = DB::select($sql);
 
-        $results['results_for_earch_country'] = $data;
+        $countries = array();
+
+        foreach($data as $country){
+            $sql = "SELECT COUNT(*) AS total FROM electors WHERE election_country='" . $country->country . "'";
+            $country_total = DB::select($sql);
+            $country_total = $country_total[0]->total;
+
+            $countries[] = array(
+                'country'       =>  $country->country,
+                'total_voters'  =>  $country_total,
+                'total_voted'   =>  $country->total,
+                'percentage'    =>  $this->numberPrecision(100*$country->total/$country_total,2)
+            );
+        }
+
+        $results['results_for_earch_country'] = $countries;
 
         return $results;
 
