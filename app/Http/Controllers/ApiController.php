@@ -183,7 +183,7 @@ class ApiController extends Controller
 
         $results['total_expatriates'] = $data[0]->total;
 
-        $sql = "SELECT COUNT(*) AS total FROM electors WHERE election_country!='' AND done=1";
+        $sql = "SELECT COUNT(*) AS total FROM votes WHERE is_country=1";
 
         $data = DB::select($sql);
 
