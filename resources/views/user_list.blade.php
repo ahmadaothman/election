@@ -12,6 +12,7 @@
             {{ session('status') }}
         </div>
     @endif
+    
 
     <table class="table table-sm table-hover table-bordered table-striped">
         <thead>

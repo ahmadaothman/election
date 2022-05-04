@@ -338,8 +338,9 @@
                         at: 'center top',
                     },
                     }, 'success', 3000);   
-                             
-                    window.location.reload();
+                    
+                    popup.hide();
+                    //window.location.reload();
                 }
             })
             },

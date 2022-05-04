@@ -40,6 +40,10 @@ Route::get('/electors/edit/{id}', [App\Http\Controllers\ElectorsController::clas
 Route::post('/electors/edit/{id}', [App\Http\Controllers\ElectorsController::class, 'edit'])->name('edit_elector');
 Route::post('/electors/saveElectionCenter', [App\Http\Controllers\ElectorsController::class, 'saveElectionCenter'])->name('saveElectionCenter');
 Route::post('/electors/electoresNumbers', [App\Http\Controllers\ElectorsController::class, 'electoresNumbers'])->name('electoresNumbers');
+Route::get('/electors/mobile', [App\Http\Controllers\ElectorsController::class, 'electorsMobile'])->name('electors_mobile');
+Route::get('/electors/data_by_user', [App\Http\Controllers\ElectorsController::class, 'getElectorsByUser'])->name('electors_by_user');
+
+
 
 
 Route::get('/ElectoralLists', [App\Http\Controllers\ElectoralListsController::class, 'index'])->name('electoral_lists');

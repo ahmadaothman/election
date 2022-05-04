@@ -11,7 +11,7 @@
 
   
 
-    <form method="POST" enctype="multipart/form-data" oninput='repassword.setCustomValidity(repassword.value != password.value ? "Passwords do not match." : "")'>
+    <form method="POST" enctype="multipart/form-data" >
         @csrf
       
         <div class="row">
@@ -48,6 +48,8 @@
 
 <script type="text/javascript">
     $('#save').on('click',function(){
+        $("#save").prop('disabled', true);
+        $("#save").html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>')
         $.ajax({
             type:'post',
             url:'/saveCountryResult',
@@ -57,10 +59,16 @@
                 candidate:$('#candidate').val()
             },
             success:function(data){
-
+                $("#save").html('حفظ')
+                $("#save").prop('disabled', false);
             }
         })
     })
 </script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+<script type="text/javascript">
+    $('#country,#candidate').select2();
+</script>
 @endsection
