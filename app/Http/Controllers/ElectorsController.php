@@ -48,6 +48,21 @@ class ElectorsController extends Controller
         return response()->json(['success'=>true,'message'=>$data->election_center,'test'=>$data]);
     }
 
+    public function electoresNumbers(){
+
+        $data = json_decode(stripslashes($_POST['data']));
+        $i = 1;
+
+        foreach($data->electors as $elector){
+            Electors::where('id',$elector->id)->update([
+                'virtual_number'=>$i,
+            ]);
+            $i++;
+        }
+        
+        return response()->json(['success'=>true,'message'=>'','test'=>$data]);
+    }
+
     public function edit(Request $request,$id){
         $data = array();
         $data['heading_title'] = 'تعديل معلومات الناخب';
@@ -89,7 +104,7 @@ class ElectorsController extends Controller
 
         return view('sort_countries_form',$data);
     }
-    
+
     public function saveCountryResult(Request $request){
         Votes::insert([
             'election_center'   =>  $request->post('country'),

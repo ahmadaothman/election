@@ -39,6 +39,8 @@ Route::get('/electors', [App\Http\Controllers\ElectorsController::class, 'index'
 Route::get('/electors/edit/{id}', [App\Http\Controllers\ElectorsController::class, 'edit'])->name('edit_elector');
 Route::post('/electors/edit/{id}', [App\Http\Controllers\ElectorsController::class, 'edit'])->name('edit_elector');
 Route::post('/electors/saveElectionCenter', [App\Http\Controllers\ElectorsController::class, 'saveElectionCenter'])->name('saveElectionCenter');
+Route::post('/electors/electoresNumbers', [App\Http\Controllers\ElectorsController::class, 'electoresNumbers'])->name('electoresNumbers');
+
 
 Route::get('/ElectoralLists', [App\Http\Controllers\ElectoralListsController::class, 'index'])->name('electoral_lists');
 

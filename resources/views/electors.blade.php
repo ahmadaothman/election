@@ -46,6 +46,13 @@
         );
     };
 
+    const numberspopupContentTemplate = function () {
+
+    return $('<div class="row p-2">').append(
+           ''
+        );
+    };
+
   
 
 </script>
@@ -230,7 +237,7 @@
         ],
         },
         paging: {
-            pageSize: 500,
+            pageSize: 1000,
         },
         onContentReady: function(e) {  
             var toolbar = e.element.find('.dx-datagrid-header-panel .dx-toolbar').dxToolbar('instance');
@@ -339,6 +346,69 @@
         },
         }],
     }).dxPopup('instance');
+
+    const numbers_popup = $('#popup').dxPopup({
+        contentTemplate: numberspopupContentTemplate,
+        width: 600,
+        height: 250,
+        container: '.dx-viewport',
+        showTitle: true,
+        title: 'ترقيم الناخبين',
+        visible: false,
+        dragEnabled: false,
+        closeOnOutsideClick: true,
+        showCloseButton: false,
+        position: {
+        at: 'center',
+        my: 'center',
+        },
+        toolbarItems: [{
+        widget: 'dxButton',
+        toolbar: 'bottom',
+        location: 'after',
+        options: {
+            text: 'الغاء',
+            onClick() {
+            numbers_popup.hide();
+            },
+        },
+        },{
+        widget: 'dxButton',
+        toolbar: 'bottom',
+        location: 'before',
+        options: {
+            icon: 'save',
+            text: 'حفظ',
+            onClick() {
+            var values = {
+                election_center:$('#election_center').val(),
+                ballot_pen:$('#ballot_pen').val(),
+                electors: dataGrid.getSelectedRowsData()
+            };
+
+            $.ajax({
+                type:'POST',
+                url:'/electors/electoresNumbers',
+                data:{
+                    data:JSON.stringify(values)
+                },
+                success: function(data){
+                    const message = 'تم الحفظ!';
+                    DevExpress.ui.notify({
+                    message,
+                    position: {
+                        my: 'center top',
+                        at: 'center top',
+                    },
+                    }, 'success', 3000);   
+                             
+                    window.location.reload();
+                }
+            })
+            },
+        },
+        }],
+    }).dxPopup('instance');
     
     function addCustomItem(toolbar) {  
         var items = toolbar.option('items');  
@@ -359,6 +429,19 @@
                 }  
             }  
             });  
+
+            items.push({
+                location:'after',
+                widget: 'dxButton',  
+                name: 'numbers_button', 
+                options:{
+                    text:'ترقيم',
+                    onClick:function(e){
+                        numbers_popup.show();
+                    }
+                }
+            });
+
             toolbar.option('items', items);  
         }
     } 
