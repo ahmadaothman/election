@@ -403,7 +403,7 @@
                     },
                     }, 'success', 3000);   
                              
-                    window.location.reload();
+                    //window.location.reload();
                 }
             })
             },
