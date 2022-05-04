@@ -32,6 +32,7 @@ Route::get('/data/BallotPens', [App\Http\Controllers\HomeController::class, 'get
 
 Route::get('/electors/get', [App\Http\Controllers\ElectorsController::class, 'get'])->name('get_electors');
 Route::post('/electors/get', [App\Http\Controllers\ElectorsController::class, 'get'])->name('get_electors');
+Route::post('/electors/edit/done', [App\Http\Controllers\ElectorsController::class, 'done'])->name('save_done');
 
 
 Route::get('/electors', [App\Http\Controllers\ElectorsController::class, 'index'])->name('electors');
@@ -62,4 +63,9 @@ Route::get('/Users/delete/{id}', [App\Http\Controllers\UsersController::class, '
 Route::get('/api/voters', [App\Http\Controllers\ApiController::class, 'voters'])->name('voters_api');
 Route::get('/api/votersByTowns', [App\Http\Controllers\ApiController::class, 'votersByTowns'])->name('votersByTowns_api');
 Route::get('/api/votersByDoctrine', [App\Http\Controllers\ApiController::class, 'getVotedByLogDoctrine'])->name('getVotedByLogDoctrine_api');
+Route::get('/api/countries_results', [App\Http\Controllers\ApiController::class, 'getVotersByCountries'])->name('getVotersByCountries');
 
+
+
+Route::get('/SortCountriesResults', [App\Http\Controllers\ElectorsController::class, 'sortCountries'])->name('SortCountriesResults');
+Route::post('/saveCountryResult', [App\Http\Controllers\ElectorsController::class, 'saveCountryResult'])->name('saveCountryResult');

@@ -204,6 +204,21 @@
                     '_blank' 
                     );
                 }
+            },{
+                text:'انتخب',
+                hint:'انتخب',
+                cssClass:'done-btn',
+                onClick:function(e){
+                    showLoadPanel
+                    $.ajax({
+                        type:'post',
+                        url:'/electors/edit/done',
+                        data:{id:e.row.cells[0].data.id},
+                        success:function(e){
+                            DevExpress.ui.notify('تم الحفظ', 'success', 2500);
+                        }
+                    })
+                }
             }]}
         
         ],
@@ -250,6 +265,14 @@
             }
           })
         },
+  
+        onRowPrepared(e){
+            if (e.rowType === "data") {
+            if(e.data.done == "1"){
+                e.rowElement.addClass('grid-row-done') ;
+                }
+            }
+        }
        
     }).dxDataGrid("instance");
 
@@ -371,5 +394,43 @@
 
 
     });
+
+    const loadPanel = $('.loadpanel').dxLoadPanel({
+    shadingColor: 'rgba(0,0,0,0.4)',
+    position: { of: 'body' },
+    visible: false,
+    showIndicator: true,
+    showPane: true,
+    shading: true,
+    closeOnOutsideClick: false,
+    onShown() {
+      setTimeout(() => {
+        loadPanel.hide();
+      }, 3000);
+    },
+    onHidden() {
+      showEmployeeInfo(employee);
+    },
+  }).dxLoadPanel('instance');
+
+
+  const showLoadPanel = function () {
+    loadPanel.show();
+    showEmployeeInfo({});
+  };
+
+  showLoadPanel
+
+
 </script>
+<style>
+    .done-btn{
+        color:green !important;
+        font-weight: bold !important;
+        text-decoration: none !important;
+    }
+    .grid-row-done{
+        background-color: greenyellow !important;
+    }
+</style>
 @endsection

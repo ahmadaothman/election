@@ -173,4 +173,35 @@ class ApiController extends Controller
 
         return $results;
     }
+
+    public function getVotersByCountries(Request $request){
+        $results = array();
+
+        $sql = "SELECT COUNT(*) AS total FROM electors WHERE election_country!=''";
+
+        $data = DB::select($sql);
+
+        $results['total_expatriates'] = $data[0]->total;
+
+        $sql = "SELECT COUNT(*) AS total FROM electors WHERE election_country!='' AND done=1";
+
+        $data = DB::select($sql);
+
+        $results['voted_expatriates'] = $data[0]->total;
+
+        $results['voted_expatriates_percentage'] = $this->numberPrecision(100*$results['voted_expatriates']/$results['total_expatriates'],4);
+
+        $sql = "SELECT COUNT(*) AS total,c.name AS name FROM votes v LEFT JOIN candidates c ON c.id=v.candidate_id WHERE v.is_country=1 GROUP BY c.name";
+        $data = DB::select($sql);
+
+        $results['results_for_earch_candidate'] = $data;
+
+        $sql = "SELECT COUNT(*) AS total,election_center AS country FROM votes v WHERE v.is_country=1 GROUP BY v.election_center";
+        $data = DB::select($sql);
+
+        $results['results_for_earch_country'] = $data;
+
+        return $results;
+
+    }
 }

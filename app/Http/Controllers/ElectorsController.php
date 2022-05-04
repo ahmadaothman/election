@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Electors;
 use App\Models\Concadidates;
+use App\Models\Votes;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ElectorsController extends Controller
 {
@@ -67,4 +70,37 @@ class ElectorsController extends Controller
 
         return view('elector_form',$data);
     }
+
+    public function done(Request $request){
+        Electors::where('id',$request->post('id'))->update(['done'=>1]);
+
+    }
+
+
+    public function sortCountries(Request $request){
+        $data = array();
+        
+        $sql = "SELECT DISTINCT (election_country) as country FROM electors WHERE election_country!=''";
+
+        $results = DB::select($sql);
+
+        $data['countries'] = $results;
+        $data['candidates'] = Concadidates::get();
+
+        return view('sort_countries_form',$data);
+    }
+    
+    public function saveCountryResult(Request $request){
+        Votes::insert([
+            'election_center'   =>  $request->post('country'),
+            'district'          =>  $request->post('country'),
+            'ballot_pen'        =>  1,
+            'candidate_id'      =>  $request->post('candidate'),
+            'user_id'           =>  Auth::id(),
+            'is_country'        =>  1
+        ]);
+
+        return array('success'=>true);
+    }
+    
 }

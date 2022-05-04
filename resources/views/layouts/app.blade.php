@@ -23,6 +23,7 @@
  
     <!-- DevExtreme library -->
     <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/21.2.5/js/dx.all.js"></script>    
+
 </head>
 <body >
     <div id="app">
@@ -52,7 +53,7 @@
                             <a class="nav-link mx-4" href="/ElectoralLists">اللوائح</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link mx-4" href="#">المراكز الانتخابية</a>
+                            <a class="nav-link mx-4" href="/SortCountriesResults">فرز نتائج المغتربين</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link mx-4" href="/UsersLists">المندوبين</a>
