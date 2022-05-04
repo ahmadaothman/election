@@ -189,7 +189,7 @@ class ApiController extends Controller
 
         $results['voted_expatriates'] = $data[0]->total;
 
-        $results['voted_expatriates_percentage'] = $this->numberPrecision(100*$results['voted_expatriates']/$results['total_expatriates'],4);
+        $results['voted_expatriates_percentage'] = $this->numberPrecision(100*$results['voted_expatriates']/$results['total_expatriates'],2);
 
         $sql = "SELECT COUNT(*) AS total,c.name AS name FROM votes v LEFT JOIN candidates c ON c.id=v.candidate_id WHERE v.is_country=1 GROUP BY c.name";
         $data = DB::select($sql);
