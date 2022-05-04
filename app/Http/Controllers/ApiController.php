@@ -23,6 +23,7 @@ class ApiController extends Controller
         }
 
         $results = array();
+        //`
 
         $sql = "SELECT COUNT(*) AS total FROM electors";
 
@@ -184,7 +185,7 @@ class ApiController extends Controller
                 'message'   =>  'Unauthorized'
             ), 401);
         }
-        
+
         $results = array();
 
         $sql = "SELECT COUNT(*) AS total FROM electors WHERE election_country!=''";
