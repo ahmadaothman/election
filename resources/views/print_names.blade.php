@@ -23,7 +23,6 @@
 
             <tr>
                 <th class="text-center">الرمز</th>
-                <th class="text-center">الرقم التسلسلي</th>
                 <th>الاسم</th>
                 <th>اسم الام</th>
                 <th class="text-center">رقم السجل</th>
@@ -34,7 +33,6 @@
         <tbody>
             @foreach ($electors as $name)
                 <tr>
-                    <td class="text-center">{{$name->id}}</td>
                     <td class="text-center"><strong>{{$name->virtual_number}}</strong></td>
                     <td>{{$name->fullName}}</td>
                     <td>{{$name->mothername}}</td>
