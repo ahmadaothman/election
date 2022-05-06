@@ -44,6 +44,8 @@ Route::post('/electors/saveElectionCenter', [App\Http\Controllers\ElectorsContro
 Route::post('/electors/electoresNumbers', [App\Http\Controllers\ElectorsController::class, 'electoresNumbers'])->name('electoresNumbers');
 Route::get('/electors/mobile', [App\Http\Controllers\ElectorsController::class, 'electorsMobile'])->name('electors_mobile');
 Route::get('/electors/data_by_user', [App\Http\Controllers\ElectorsController::class, 'getElectorsByUser'])->name('electors_by_user');
+Route::get('/print', [App\Http\Controllers\ElectorsController::class, 'print'])->name('print');
+Route::post('/print', [App\Http\Controllers\ElectorsController::class, 'print'])->name('print');
 
 
 

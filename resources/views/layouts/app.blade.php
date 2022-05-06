@@ -47,6 +47,9 @@
                             <a class="nav-link mx-4" href="/electors">الناخبين</a>
                         </li>
                         <li class="nav-item active">
+                            <a class="nav-link mx-4" href="/print">طباعة</a>
+                        </li>
+                        <li class="nav-item active">
                             <a class="nav-link mx-4" href="/ConcadidatesLists">المرشحين</a>
                         </li>
                         <li class="nav-item active">

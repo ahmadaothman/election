@@ -146,4 +146,27 @@ class ElectorsController extends Controller
 
         return $electors;
     }
+
+    public function print(Request $request){
+        $data = array();
+
+        $data['districts'] = DB::select("SELECT DISTINCT district FROM electors");
+
+
+        if ($request->isMethod('post')) {
+            $electors = Electors::where('district',$request->post('district'))
+            ->where('election_center',$request->post('election_center'))
+            ->where('ballot_pen',$request->post('ballot_pen'))
+            ->get();
+            $data['electors'] = $electors;
+            $data['district'] = $request->post('district');
+            $data['election_center'] = $request->post('election_center');
+            $data['ballot_pen'] = $request->post('ballot_pen');
+            $data['count'] = count($electors);
+            return view('print_names',$data);
+        }else{
+            return view('print',$data);
+        }
+       
+    }
 }
