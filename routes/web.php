@@ -33,6 +33,8 @@ Route::get('/data/BallotPens', [App\Http\Controllers\HomeController::class, 'get
 Route::get('/electors/get', [App\Http\Controllers\ElectorsController::class, 'get'])->name('get_electors');
 Route::post('/electors/get', [App\Http\Controllers\ElectorsController::class, 'get'])->name('get_electors');
 Route::post('/electors/edit/done', [App\Http\Controllers\ElectorsController::class, 'done'])->name('save_done');
+Route::post('/electors/save_mobile_data', [App\Http\Controllers\ElectorsController::class, 'doneMobile'])->name('save_done_mobile');
+
 
 
 Route::get('/electors', [App\Http\Controllers\ElectorsController::class, 'index'])->name('electors');

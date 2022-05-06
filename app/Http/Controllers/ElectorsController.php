@@ -93,6 +93,10 @@ class ElectorsController extends Controller
 
     }
 
+    public function doneMobile(Request $request){
+        Electors::where('id',$request->post('id'))->update(['done'=>1]);
+
+    }
 
     public function sortCountries(Request $request){
         $data = array();

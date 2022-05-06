@@ -29,6 +29,29 @@
  
 </div>
 
+<div class="modal" tabindex="-1" role="dialog" id="modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">حفظ</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#modal').modal('hide')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="modal_id" />
+          <strong>الرقم:  </strong><strong id="modal_number"></strong>
+          <br>
+          <strong>الاسم:  </strong><strong id="modal_name"></strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="saveData()">حفظ</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$('#modal').modal('hide')">الغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script type="text/javascript">
 getData()
 
@@ -40,11 +63,17 @@ function getData(){
         url:'/electors/data_by_user',
         success:function(data){
             $.each(data,function(k,v){
-                html = '<tr id="e-'+v.id+'" class="elector-row">'
-                html += '<td>'
+                var html = '';
+                if(v.done == "1"){
+                    html = '<tr id="e-'+v.id+'" class="elector-row done" >'
+                }else{
+                    html = '<tr id="e-'+v.id+'" class="elector-row" >'
+                }
+                html += '<input type="hidden" class="id" value="'+v.id+'">'
+                html += '<td class="number">'
                 html += v.virtual_number
                 html += '</td>'
-                html += '<td>'
+                html += '<td class="name">'
                 html += v.FullName
                 html += '</td>'
                 html += '<td>'
@@ -62,17 +91,38 @@ function getData(){
 
 
     $(document).on("click", ".elector-row", function() {
-        alert($(this).attr('id'))
+
+        $('#modal_id').val($('#'+$(this).attr('id') + ' .id').val())
+        $('#modal_number').html($('#'+$(this).attr('id') + ' .number').html())
+        $('#modal_name').html($('#'+$(this).attr('id') + ' .name').html())
+        $('#modal').modal('show')
+
     });
 }
 
-
+function saveData(){
+    $.ajax({
+        type:'POST',
+        url:'/electors/save_mobile_data',
+        data:{
+            "_token": "{{ csrf_token() }}",
+            id:$('#modal_id').val()
+        },
+        success:function(){
+            $('#modal').modal('hide')
+            $('#e-'+$('#modal_id').val()).addClass('done')
+        }
+    })
+}
 
 </script>
 
 <style>
     .navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm{
         display: none !important;
+    }
+    .done{
+        background-color: greenyellow !important;
     }
 </style>
 

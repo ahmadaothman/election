@@ -207,7 +207,7 @@ class ApiController extends Controller
 
         $results['results_for_earch_candidate'] = $data;
 
-        $sql = "SELECT COUNT(*) AS total,election_center AS country FROM votes v WHERE v.is_country=1 GROUP BY v.election_center";
+        $sql = "SELECT COUNT(*) AS total,election_country AS country FROM electors WHERE election_country!='' AND done=1 GROUP BY election_country";
         $data = DB::select($sql);
 
         $countries = array();
