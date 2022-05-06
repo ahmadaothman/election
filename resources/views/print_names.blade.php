@@ -12,7 +12,7 @@
     <table class="table table-hover table-sm table-striped w-100">
         <thead>
             <tr>
-                <th colspan="8" class="text-center border"><h3>الماكنة الانتخابية للمرشح النائب سامي فتفت</h3></th>
+                <th colspan="8" class="text-center border"><h3>الماكينة الانتخابية للمرشح النائب سامي فتفت</h3></th>
             </tr>
             <tr>
                 <th colspan="2" class="text-left">البلدة: <strong>{{$district}}</strong></th>
@@ -28,6 +28,7 @@
                 <th class="text-center">رقم السجل</th>
                 <th>تاريخ الميلاد</th>
                 <th class="text-center">مذهب السجل</th>
+                <th class="text-center">بلد الاقتراع</th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +40,7 @@
                     <td class="text-center">{{$name->log}}</td>
                     <td>{{$name->date_of_birth}}</td>
                     <td class="text-center">{{$name->log_doctrine}}</td>
+                    <td class="text-center">{{$name->election_country}}</td>
                 </tr>
             @endforeach
         </tbody>
