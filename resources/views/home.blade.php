@@ -4,7 +4,7 @@
 <div class="container ">
   <div class="row">
     <div class="col-md-12 text-center">
-      <h1> الماكنة الانتخابية للنائب سامي فتفت</h1>
+      <h1> الماكينة الانتخابية للنائب سامي فتفت</h1>
     </div>
   </div>
   <hr>
