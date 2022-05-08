@@ -65,7 +65,7 @@ class ElectorsController extends Controller
             $i++;
         }
         
-        return response()->json(['success'=>true,'message'=>'','test'=>$data]);
+        return response()->json(['success'=>true,'message'=>'']);
     }
 
     public function edit(Request $request,$id){
