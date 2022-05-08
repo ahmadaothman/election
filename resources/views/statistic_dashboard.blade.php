@@ -62,7 +62,7 @@
           type: 'doughnut',
           palette: 'Soft Pastel',
            size: {
-            height: 300,
+            height: 350,
           },
           dataSource:'/statistic/doctrine',
           title: {
@@ -173,5 +173,8 @@
   .navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm{
     display: none !important;
   }
+  body {
+    height: 95vh !important;
+}
 </style>  
 @endsection
