@@ -12,6 +12,7 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('mobile_user');
     }
 
     public function list(){
@@ -25,8 +26,6 @@ class UsersController extends Controller
         $data = array();
         
         $data['districts'] = DB::select("SELECT DISTINCT district FROM electors");
-
-       
 
         if($request->method() == 'POST'){
             $validation = $request->validate([
@@ -109,6 +108,4 @@ class UsersController extends Controller
         User::where('id',$id)->delete();
         return redirect(route('users_list'))->with('status', 'Success: User delete!');
     }
-
-   
 }

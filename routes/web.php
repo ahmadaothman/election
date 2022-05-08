@@ -33,7 +33,6 @@ Route::get('/data/BallotPens', [App\Http\Controllers\HomeController::class, 'get
 Route::get('/electors/get', [App\Http\Controllers\ElectorsController::class, 'get'])->name('get_electors');
 Route::post('/electors/get', [App\Http\Controllers\ElectorsController::class, 'get'])->name('get_electors');
 Route::post('/electors/edit/done', [App\Http\Controllers\ElectorsController::class, 'done'])->name('save_done');
-Route::post('/electors/save_mobile_data', [App\Http\Controllers\ElectorsController::class, 'doneMobile'])->name('save_done_mobile');
 
 
 
@@ -42,8 +41,6 @@ Route::get('/electors/edit/{id}', [App\Http\Controllers\ElectorsController::clas
 Route::post('/electors/edit/{id}', [App\Http\Controllers\ElectorsController::class, 'edit'])->name('edit_elector');
 Route::post('/electors/saveElectionCenter', [App\Http\Controllers\ElectorsController::class, 'saveElectionCenter'])->name('saveElectionCenter');
 Route::post('/electors/electoresNumbers', [App\Http\Controllers\ElectorsController::class, 'electoresNumbers'])->name('electoresNumbers');
-Route::get('/electors/mobile', [App\Http\Controllers\ElectorsController::class, 'electorsMobile'])->name('electors_mobile');
-Route::get('/electors/data_by_user', [App\Http\Controllers\ElectorsController::class, 'getElectorsByUser'])->name('electors_by_user');
 Route::get('/print', [App\Http\Controllers\ElectorsController::class, 'print'])->name('print');
 Route::post('/print', [App\Http\Controllers\ElectorsController::class, 'print'])->name('print');
 
@@ -79,3 +76,8 @@ Route::get('/api/countries_results', [App\Http\Controllers\ApiController::class,
 
 Route::get('/SortCountriesResults', [App\Http\Controllers\ElectorsController::class, 'sortCountries'])->name('SortCountriesResults');
 Route::post('/saveCountryResult', [App\Http\Controllers\ElectorsController::class, 'saveCountryResult'])->name('saveCountryResult');
+
+
+Route::get('/electors/mobile', [App\Http\Controllers\MobileController::class, 'electorsMobile'])->name('electors_mobile');
+Route::get('/electors/data_by_user', [App\Http\Controllers\MobileController::class, 'getElectorsByUser'])->name('electors_by_user');
+Route::post('/electors/save_mobile_data', [App\Http\Controllers\MobileController::class, 'doneMobile'])->name('save_done_mobile');

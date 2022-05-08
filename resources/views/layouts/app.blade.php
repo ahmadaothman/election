@@ -52,9 +52,7 @@
                         <li class="nav-item active">
                             <a class="nav-link mx-4" href="/ConcadidatesLists">المرشحين</a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link mx-4" href="/ElectoralLists">اللوائح</a>
-                        </li>
+                
                         <li class="nav-item active">
                             <a class="nav-link mx-4" href="/SortCountriesResults">فرز نتائج المغتربين</a>
                         </li>

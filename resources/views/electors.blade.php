@@ -196,6 +196,21 @@
                 allowEditing: false
             },
             {
+                caption: 'انتخب',
+                dataField:'done',
+                allowEditing: false,
+                allowFiltering: true,
+                calculateCellValue(e) {
+                    let { done} = e;
+                    if(done==1){
+                        return 'نعم';
+                    }else{
+                        return 'لا';
+                    }
+                 //   return data.firstname + ' ' + data.fathername + ' ' + data.lastname
+                }
+            },
+            {
                 caption: 'بلد الإقتراع',
                 dataField:'election_country',
                 allowEditing: false
