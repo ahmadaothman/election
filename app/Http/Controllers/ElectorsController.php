@@ -35,7 +35,9 @@ class ElectorsController extends Controller
                 Electors::where('id',$data['id'])->update(['virtual_number'=>$data['value']]);
             }
         }
-        return Electors::where('district',$request->get('district'))->get();
+        return Electors::where('district',$request->get('district'))
+        ->orderByRaw("CAST(log as UNSIGNED) ASC")
+        ->get();
     }
 
     public function saveElectionCenter(Request $request){
@@ -158,6 +160,7 @@ class ElectorsController extends Controller
             $electors = Electors::where('district',$request->post('district'))
             ->where('election_center',$request->post('election_center'))
             ->where('ballot_pen',$request->post('ballot_pen'))
+            ->orderByRaw("CAST(log as UNSIGNED) ASC")
             ->get();
             $data['electors'] = $electors;
             $data['district'] = $request->post('district');
