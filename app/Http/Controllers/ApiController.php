@@ -133,6 +133,17 @@ class ApiController extends Controller
         
         $results = array();
 
+        $sql = "SELECT COUNT(*) AS total FROM electors WHERE `done`=1";
+
+        if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
+            $sql .= " AND (election_country IS NULL OR election_country = '')";
+        }
+
+        $data = DB::select($sql);
+
+        $total_voted = $data[0]->total;
+        
+
         $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='سني' AND done=1";
 
         if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
@@ -141,8 +152,23 @@ class ApiController extends Controller
 
         $data = DB::select($sql);
 
-        $results['سني'] = $data[0]->total;
+        $results['سني']['total_voted'] = $data[0]->total;
 
+        $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='سني' ";
+
+        if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
+            $sql .= " AND (election_country IS NULL OR election_country = '')";
+        }
+
+        $data = DB::select($sql);
+
+        $results['سني']['total_electors'] = $data[0]->total;
+
+        $results['سني']['voted_percentage'] = $this->numberPrecision(100*$results['سني']['total_voted']/$results['سني']['total_electors'],2);
+
+        $results['سني']['voted_percentage_from_total_voters'] = $this->numberPrecision(100*$results['سني']['total_voted']/$total_voted,2);
+
+        ///////////
         $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='روم ارثوذكس' AND done=1";
 
         if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
@@ -150,10 +176,10 @@ class ApiController extends Controller
         }
 
         $data = DB::select($sql);
+        
+        $results['روم ارثوذكس']['total_voted'] = $data[0]->total;
 
-        $results['روم ارثوذكس'] = $data[0]->total;
-
-        $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='ماروني' AND done=1";
+        $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='روم ارثوذكس' ";
 
         if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
             $sql .= " AND (election_country IS NULL OR election_country = '')";
@@ -161,8 +187,38 @@ class ApiController extends Controller
 
         $data = DB::select($sql);
 
-        $results['ماروني'] = $data[0]->total;
+        $results['روم ارثوذكس']['total_electors'] = $data[0]->total;
 
+        $results['روم ارثوذكس']['voted_percentage'] = $this->numberPrecision(100*$results['روم ارثوذكس']['total_voted']/$results['روم ارثوذكس']['total_electors'],2);
+        $results['روم ارثوذكس']['voted_percentage_from_total_voters'] = $this->numberPrecision(100*$results['روم ارثوذكس']['total_voted']/$total_voted,2);
+
+
+       ///
+       $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='ماروني' AND done=1";
+
+        if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
+            $sql .= " AND (election_country IS NULL OR election_country = '')";
+        }
+
+        $data = DB::select($sql);
+        
+        $results['ماروني']['total_voted'] = $data[0]->total;
+
+        $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='ماروني' ";
+
+        if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
+            $sql .= " AND (election_country IS NULL OR election_country = '')";
+        }
+
+        $data = DB::select($sql);
+
+        $results['ماروني']['total_electors'] = $data[0]->total;
+
+        $results['ماروني']['voted_percentage'] = $this->numberPrecision(100*$results['ماروني']['total_voted']/$results['ماروني']['total_electors'],2);
+        $results['ماروني']['voted_percentage_from_total_voters'] = $this->numberPrecision(100*$results['ماروني']['total_voted']/$total_voted,2);
+
+
+        ///
         $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='شيعي' AND done=1";
 
         if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
@@ -170,8 +226,21 @@ class ApiController extends Controller
         }
 
         $data = DB::select($sql);
+        
+        $results['شيعي']['total_voted'] = $data[0]->total;
 
-        $results['شيعي'] = $data[0]->total;
+        $sql = "SELECT COUNT(*) as total FROM electors WHERE log_doctrine='شيعي' ";
+
+        if($request->get('without_expatriates') && $request->get('without_expatriates') == "1"){
+            $sql .= " AND (election_country IS NULL OR election_country = '')";
+        }
+
+        $data = DB::select($sql);
+
+        $results['شيعي']['total_electors'] = $data[0]->total;
+        $results['شيعي']['voted_percentage'] = $this->numberPrecision(100*$results['شيعي']['total_voted']/$results['شيعي']['total_electors'],2);
+        $results['شيعي']['voted_percentage_from_total_voters'] = $this->numberPrecision(100*$results['شيعي']['total_voted']/$total_voted,2);
+
 
         return $results;
     }

@@ -77,7 +77,7 @@
 </script>
 <!--data by doctrine-->
 <script type="text/javascript">
-$(() => {   
+$(() => {
   $('#total_by_doctrine').dxPieChart({
     type: 'doughnut',
     palette: 'Soft Pastel',
