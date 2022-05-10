@@ -166,7 +166,7 @@
 
   var intervalId = window.setInterval(function(){
     getData()
-  }, 300000);
+  }, 3000000);
 </script>
 
 <style>
