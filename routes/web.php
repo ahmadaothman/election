@@ -89,3 +89,5 @@ Route::get('/statistic/doctrine', [App\Http\Controllers\StatisticDashboardContro
 Route::get('/statistic/towns', [App\Http\Controllers\StatisticDashboardController::class, 'votersByTowns'])->name('statistic_towns');
 Route::get('/statistic/sex', [App\Http\Controllers\StatisticDashboardController::class, 'getDataBySex'])->name('statistic_sex');
 
+
+Route::get('/results', [App\Http\Controllers\StatisticDashboardController::class, 'results'])->name('results');

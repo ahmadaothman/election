@@ -12,6 +12,7 @@ class ConcadidatesController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('mobile_user');
+        $this->middleware('statistics');
     }
     
     public function index(Request $request){

@@ -4,7 +4,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12 text-center  ">
-      <h3 class="border p-3"> الماكينة الانتخابية للمرشح النائب سامي فتفت</h3>
+      <a href="{{ route('results') }}" id="title"><h3 class="border p-3"> الماكينة الانتخابية للمرشح النائب سامي فتفت</h3></a>
     </div>
   </div>
 
@@ -12,11 +12,11 @@
   <div class="row m-2">
 
       <div class="col-md-4 border rounded  text-center bg-white border-dark">
-         <h4 class="m-3">اجمالي الناخبين</h4>
+         <h4 class="m-3">اجمالي الناخبين في الضنية</h4>
          <strong class="h4 bg-primary px-4 text-white rounded py-1 " id="total_voters"></strong>
-         <h4 class="m-3">اجمالي المقترعين</h4>
+         <h4 class="m-3">اجمالي المقترعين في الضنية</h4>
          <strong class="h4 bg-primary px-4 text-white rounded py-1 " id="total_voted"></strong>
-         <h4 class="m-3">نسبة الاقتراع</h4>
+         <h4 class="m-3">نسبة الاقتراع في الضنية</h4>
          <strong class="h4 bg-primary px-4 text-white rounded py-1" id="voted_percentage"></strong>
        
       </div>
@@ -175,6 +175,10 @@
   }
   body {
     height: 95vh !important;
+}
+#title{
+  text-decoration: none;
+  color: black !important;
 }
 </style>  
 @endsection

@@ -257,4 +257,9 @@ class StatisticDashboardController extends Controller
         return $data;
     }
 
+    public function results(Request $request){
+        $data = array();
+        return View('results',$data);
+    }
+
 }

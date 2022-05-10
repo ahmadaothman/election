@@ -10,5 +10,6 @@ class ContersController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('mobile_user');
+        $this->middleware('statistics');
     }
 }
