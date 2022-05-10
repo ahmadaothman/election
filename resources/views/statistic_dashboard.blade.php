@@ -3,11 +3,14 @@
 @section('content')
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12 text-center  ">
-      <a href="{{ route('results') }}" id="title"><h3 class="border p-3"> الماكينة الانتخابية للمرشح النائب سامي فتفت</h3></a>
+    <div class="col-sm-6 text-left  ">
+      <a href="{{ route('results') }}" id="title"><h4 class=" p-3"> الماكينة الانتخابية للمرشح النائب سامي فتفت</h4></a>
+    </div>
+    <div class="col-sm-6 " style="text-align: end !important;">
+      <img src="{{ asset('/img/logo.png')}}" style=" height:70px;width:auto;">
     </div>
   </div>
-
+  <hr>
   
   <div class="row m-2">
 
@@ -28,6 +31,10 @@
       </div>
 
       <div class="col-md-4 bg-white rounded border border-dark">
+        <div class="row">
+          <div class="col-sm-12 text-center h5">نسب الاقتراع في قرى الضنية</div>
+          <hr >
+        </div>
         <div id="total_by_towns" class="m-2 row">
         </div>
       </div>
@@ -142,7 +149,8 @@
               precision: 0,
             },
             font:{
-              size:22
+              size:22,
+              family:"Cairo"
             }
           },
         },
@@ -168,8 +176,12 @@
     getData()
   }, 3000000);
 </script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
 
 <style>
+  #title {
+  font-family: "Cairo", sans-serif !important;
+}
   .navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm{
     display: none !important;
   }

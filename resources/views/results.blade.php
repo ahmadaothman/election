@@ -2,14 +2,16 @@
 
 @section('content')
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12 text-center  ">
-      <a href="{{ route('statistic') }}" id="title"><h3 class="border p-3"> الماكينة الانتخابية للمرشح النائب سامي فتفت</h3></a>
+    <div class="row">
+        <div class="col-sm-6 text-left  ">
+            <a href="{{ route('statistic') }}" id="title"><h4 class=" p-3"> الماكينة الانتخابية للمرشح النائب سامي فتفت</h4></a>
+        </div>
+        <div class="col-sm-6 " style="text-align: end !important;">
+            <img src="{{ asset('/img/logo.png')}}" style=" height:70px;width:auto;">
+        </div>
     </div>
-    <div class="col-md-12 text-center  ">
-       <h3 class=" p-3">نتائج فرز الاصوات في الضنية</h3>
-    </div>
-  </div>
+    <hr>
+    <h3 class="text-center">نتائج فرز الاصوات في الضنية</h3>
 
   
 </div>
@@ -17,6 +19,9 @@
 
 
 <style>
+      #title {
+  font-family: "Cairo", sans-serif !important;
+}
   .navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm{
     display: none !important;
   }
