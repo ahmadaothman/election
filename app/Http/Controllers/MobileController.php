@@ -49,4 +49,20 @@ class MobileController extends Controller
 
         return array('success'=>true);
     }
+
+    public function vote(Request $request){
+        if($request->method() == 'POST'){
+            $user = User::where('id',Auth::id())->first();
+
+            $data['user'] = $user;
+
+            $sql = "INSERT INTO votes SET election_center='" . $user->election_center . "',district='" . $user->district . "',ballot_pen='" . $user->ballot_pen . "',candidate_id='" . (int)$request->post('id') . "',user_id='" . Auth::id() . "',is_country=0";
+            DB::insert($sql);
+        }else{
+            $sql = "SELECT * FROM candidates ORDER BY sort_order";
+            $data = array();
+            $data['candidates'] = DB::select($sql);
+            return view('vote',$data);
+        }
+    }
 }

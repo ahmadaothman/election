@@ -81,6 +81,8 @@ Route::post('/saveCountryResult', [App\Http\Controllers\ElectorsController::clas
 Route::get('/electors/mobile', [App\Http\Controllers\MobileController::class, 'electorsMobile'])->name('electors_mobile');
 Route::get('/electors/data_by_user', [App\Http\Controllers\MobileController::class, 'getElectorsByUser'])->name('electors_by_user');
 Route::post('/electors/save_mobile_data', [App\Http\Controllers\MobileController::class, 'doneMobile'])->name('save_done_mobile');
+Route::get('/electors/vote', [App\Http\Controllers\MobileController::class, 'vote'])->name('vote');
+Route::post('/electors/vote', [App\Http\Controllers\MobileController::class, 'vote'])->name('post_vote');
 
 
 Route::get('/statistic', [App\Http\Controllers\StatisticDashboardController::class, 'index'])->name('statistic');

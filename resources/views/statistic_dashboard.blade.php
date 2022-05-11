@@ -32,7 +32,7 @@
 
       <div class="col-md-4 bg-white rounded border border-dark">
         <div class="row">
-          <div class="col-sm-12 text-center h5">نسب الاقتراع في قرى الضنية</div>
+          <div class="col-sm-12 text-center h5 m-0 py-2">نسب الاقتراع في قرى الضنية</div>
           <hr >
         </div>
         <div id="total_by_towns" class="m-2 row">
