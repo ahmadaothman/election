@@ -22,13 +22,12 @@ class LoginSuccessful
 
     public function handle($event)
     {
-        $user = Auth::user();
+        /*$user = Auth::user();
 
         $userId = $user->id;
         $mytime = Carbon\Carbon::now();
 
-        DB::insert("INSERT INTO user_login_log SET user_id='" . $userId . "',ip='" . $this->getUserIpAddr() . "',user_agent='" . $_SERVER['HTTP_USER_AGENT'] . "',created_at='" . $mytime->toDateTimeString() . "',updated_at='" . $mytime->toDateTimeString() . "'");
-        echo $userId;
+        DB::insert("INSERT INTO user_login_log SET user_id='" . $userId . "',ip='" . $this->getUserIpAddr() . "',user_agent='" . $_SERVER['HTTP_USER_AGENT'] . "',created_at='" . $mytime->toDateTimeString() . "',updated_at='" . $mytime->toDateTimeString() . "'");*/
     }
 
     public function getUserIpAddr(){
