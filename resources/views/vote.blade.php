@@ -45,11 +45,14 @@
   text-decoration: none;
   color: black !important;
 }
+.done{
+    background-color: greenyellow !important;
+}
 </style>  
 
 <script>
     $(document).on('click','.vote-row',function(){
-        alert($(this).attr('id'))
+
         var id = $(this).attr('id')
         $.ajax({
             type:'POST',
@@ -59,7 +62,7 @@
                 id:id,
             },
             success:function(data){
-                
+                alert('تم الحفظ')
             }
         })
     })
