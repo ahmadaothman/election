@@ -23,6 +23,7 @@
                 <th>البلدة</th>
                 <th>مركز الاقتراع</th>
                 <th>القلم</th>
+                <th>الصفة</th>
                 <th></th>
             </tr>
         </thead>
@@ -35,6 +36,13 @@
                     <td>{{$user->district}}</td>
                     <td>{{$user->election_center}}</td>
                     <td>{{$user->ballot_pen}}</td>
+                    <td>
+                        @if ($user->position == 'fixed')
+                        مندوب ثابت
+                        @elseif($user->position == 'it')
+                        مندوب معلوماتية
+                        @endif
+                    </td>
                     <td><a href="/Users/edit/{{$user->id}}">تعديل</a></td>
                 </tr>
             @endforeach

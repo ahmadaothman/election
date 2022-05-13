@@ -94,7 +94,10 @@ class ElectorsController extends Controller
 
     public function done(Request $request){
         Electors::where('id',$request->post('id'))->update(['done'=>1]);
+    }
 
+    public function deleteDone(Request $request){
+        Electors::where('id',$request->post('id'))->update(['done'=>0]);
     }
 
     public function doneMobile(Request $request){

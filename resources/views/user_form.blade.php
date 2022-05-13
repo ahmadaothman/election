@@ -77,12 +77,24 @@
             <select class="form-control" id="ballot_pen" name="ballot_pen">
             </select>
         </div>
-        <div class="col-6 mb-6">
+        <div class="col-4 mb-6">
+            <label for="type">الصفة</label>
+            <select class="form-control" id="type" name="type">
+                @foreach ($types as $type)
+                    @if ($type['key'] == $user_type)
+                    <option value="{{ $type['key'] }}" selected >{{ $type['title'] }}</option>
+                    @else
+                    <option value="{{ $type['key'] }}">{{ $type['title'] }}</option>
+                    @endif
+                @endforeach
+            </select>
+        </div>
+        <div class="col-4 mb-6">
             <label for="password">كلمة المرور</label>
             <input id="password" name="password" type="password"  class="form-control @error('password') is-invalid @enderror" placeholder="كلمة المرور" autocomplete="new-password">
         </div>
 
-        <div class="col-6 mb-6">
+        <div class="col-4 mb-6">
             <label for="repassword">اعادة كتابة كلمة المرور</label>
             <input id="repassword" name="repassword" type="password" class="form-control placeholder="اعادة كتابة كلمة المرور" >
         </div>

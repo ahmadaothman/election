@@ -18,7 +18,7 @@ class UsersController extends Controller
 
     public function list(){
         $data = array();
-        $data['users'] = User::where('position','fixed')->get();
+        $data['users'] = User::where('position','!=','')->get();
 
         return view('user_list',$data);
     }
@@ -27,6 +27,13 @@ class UsersController extends Controller
         $data = array();
         
         $data['districts'] = DB::select("SELECT DISTINCT district FROM electors");
+
+        $data['types'] = array(
+            array('key'=>'fixed','title'=>'ثابت'),
+             array('key'=>'it','title'=>'معلوماتية'),
+        );
+
+        
 
         if($request->method() == 'POST'){
             $validation = $request->validate([
@@ -44,7 +51,7 @@ class UsersController extends Controller
                 'election_center'   =>  $request->input('election_center'),
                 'ballot_pen'        =>  $request->input('ballot_pen'),
                 'password'          =>  Hash::make($request->input('password')),
-                'position'          =>  'fixed',
+                'position'          =>  $request->input('type'),
                 'updated_at'        =>  now(),
                 'created_at'        =>  now()
             ];
@@ -60,6 +67,11 @@ class UsersController extends Controller
         
         $data['districts'] = DB::select("SELECT DISTINCT district FROM electors");
 
+        $data['types'] = array(
+            array('key'=>'fixed','title'=>'ثابت'),
+            array('key'=>'it','title'=>'معلوماتية'),
+        );
+
         $user = User::where('id',$id)->first();
 
         $data['name'] = $user->name;
@@ -68,6 +80,7 @@ class UsersController extends Controller
         $data['district'] = $user->district;
         $data['election_center'] = $user->election_center;
         $data['ballot_pen'] = $user->ballot_pen;
+        $data['user_type'] = $user->position;
 
         $data['id'] = $user->id;
 
@@ -91,6 +104,7 @@ class UsersController extends Controller
                 'district'          =>  $request->input('district'),
                 'election_center'   =>  $request->input('election_center'),
                 'ballot_pen'        =>  $request->input('ballot_pen'),
+                'position'          =>  $request->input('type'),
                 'updated_at'        =>  now(),
             ];
 

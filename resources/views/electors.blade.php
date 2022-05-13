@@ -114,7 +114,7 @@
         },
         showColumnLines: true,
         showRowLines: true,
-        rowAlternationEnabled: true,
+        rowAlternationEnabled: false,
         showBorders: true,
         onExporting(e) {
             const workbook = new ExcelJS.Workbook();
@@ -218,28 +218,42 @@
             {
             type: "buttons",
             buttons: [{
-                text: "تعديل",
-                hint: "تعديل ",
+                text: "لم ينتخب",
+                hint: "لم ينتخب ",
+                cssClass:'delete-done-btn',
                 onClick: function (e) {
-                    window.open(
-                    '/electors/edit/'+e.row.cells[0].data.id,
-                    '_blank' 
-                    );
+                    $.ajax({
+                        type:'post',
+                        url:'/electors/edit/delete_done',
+                        data:{id:e.row.cells[0].data.id},
+                        success:function(data){
+                            DevExpress.ui.notify('تم الحفظ', 'success', 2500);
+                            $.each(e.row.cells,function(k,v){
+                                console.log(v)
+                                v.cellElement.css('background-color','white')
+                            })
+                        }
+                    });
                 }
             },{
                 text:'انتخب',
                 hint:'انتخب',
                 cssClass:'done-btn',
                 onClick:function(e){
+                  //  console.log(e.row.cells)
+                   
                     showLoadPanel
                     $.ajax({
                         type:'post',
                         url:'/electors/edit/done',
                         data:{id:e.row.cells[0].data.id},
-                        success:function(e){
+                        success:function(data){
                             DevExpress.ui.notify('تم الحفظ', 'success', 2500);
+                            $.each(e.row.cells,function(k,v){
+                                v.cellElement.addClass('grid-row-done')
+                            })
                         }
-                    })
+                    });
                 }
             }]}
         
@@ -530,6 +544,11 @@
     }
     .grid-row-done{
         background-color: greenyellow !important;
+    }
+    .delete-done-btn{
+        color:red !important;
+        font-weight: bold !important;
+        text-decoration: none !important;
     }
 </style>
 @endsection
