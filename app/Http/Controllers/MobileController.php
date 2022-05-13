@@ -38,7 +38,7 @@ class MobileController extends Controller
         ->where('district',$user->district)
         ->where('election_center',$user->election_center)
         ->where('ballot_pen',$user->ballot_pen)
-        ->orderBy('virtual_numer')
+        ->orderByRaw("CAST(virtual_number as UNSIGNED) ASC")
         ->get();
 
 
