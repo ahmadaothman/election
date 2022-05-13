@@ -131,7 +131,10 @@ $(document).ready(function(){
     $("#search").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#table  tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        $(this).toggle($(this.children[1]).text().toLowerCase() == value && value != '')
+        if(value == ''){
+            $(this).show()
+        }
     });
     });
 });
