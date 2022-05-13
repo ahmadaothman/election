@@ -20,7 +20,7 @@
             <th>الرمز</th>
             <th>الاسم</th>
             <th>الام</th>
-            <th>السجل</th>
+         <!--   <th>السجل</th>-->
         </tr>
     </thead>
     <tbody id="tbody">
@@ -80,8 +80,8 @@ function getData(){
                 html += v.mothername
                 html += '</td>'
                 html += '<td>'
-                html += v.log
-                html += '</td>'
+               /* html += v.log
+                html += '</td>'*/
                 html += '</tr>'
 
                 $('#tbody').append(html)
