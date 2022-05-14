@@ -91,12 +91,12 @@
         </div>
         <div class="col-4 mb-6">
             <label for="password">كلمة المرور</label>
-            <input id="password" name="password" type="password"  class="form-control @error('password') is-invalid @enderror" placeholder="كلمة المرور" autocomplete="new-password">
+            <input id="password" name="password" type="text"  class="form-control @error('password') is-invalid @enderror" placeholder="كلمة المرور" autocomplete="new-password">
         </div>
 
         <div class="col-4 mb-6">
             <label for="repassword">اعادة كتابة كلمة المرور</label>
-            <input id="repassword" name="repassword" type="password" class="form-control placeholder="اعادة كتابة كلمة المرور" >
+            <input id="repassword" name="repassword" type="text" class="form-control placeholder="اعادة كتابة كلمة المرور" >
         </div>
 
     </div>
