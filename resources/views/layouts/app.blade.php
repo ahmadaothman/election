@@ -19,10 +19,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/21.2.5/css/dx.light.css">
- 
-    <!-- DevExtreme library -->
-    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/21.2.5/js/dx.all.js"></script>    
+    <!--<link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/21.2.5/css/dx.light.css">
+    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/21.2.5/js/dx.all.js"></script>  -->
+
+    <link rel="stylesheet" href="{{ asset('src/lib/css/dx.light.css') }}">
+    <script type="text/javascript" src="{{ asset('src/lib/js/dx.all.js') }}"></script>    
 
 </head>
 <body >
