@@ -54,7 +54,7 @@
                         </li>
                 
                         <li class="nav-item active">
-                            <a class="nav-link mx-4" href="/SortCountriesResults">فرز نتائج المغتربين</a>
+                            <a class="nav-link mx-4" href="/SortResults">فرز النتائج</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link mx-4" href="/UsersLists">المندوبين</a>
