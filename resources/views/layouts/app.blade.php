@@ -102,7 +102,7 @@
         </main>
     </div>
 
-    @if (Auth::user()->position  == 'it')
+    @if (Auth::check() && Auth::user()->position  == 'it')
         <style>
             .hide-for-it{
                 display: none !important;
