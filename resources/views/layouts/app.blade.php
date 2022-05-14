@@ -40,23 +40,23 @@
                     @if (Auth::check())
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ">
-                        <li class="nav-item active">
+                        <li class="nav-item active hide-for-it">
                             <a class="nav-link mx-4" href="/">الصفحة الرئيسية</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link mx-4" href="/electors">الناخبين</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item active hide-for-it">
                             <a class="nav-link mx-4" href="/print">طباعة</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item active hide-for-it">
                             <a class="nav-link mx-4" href="/ConcadidatesLists">المرشحين</a>
                         </li>
                 
-                        <li class="nav-item active">
+                        <li class="nav-item active hide-for-it">
                             <a class="nav-link mx-4" href="/SortResults">فرز النتائج</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item active hide-for-it">
                             <a class="nav-link mx-4" href="/UsersLists">المندوبين</a>
                         </li>
                     </ul>
@@ -101,5 +101,13 @@
             @yield('content')
         </main>
     </div>
+
+    @if (Auth::user()->position  == 'it')
+        <style>
+            .hide-for-it{
+                display: none !important;
+            }
+        </style>
+    @endif
 </body>
 </html>
