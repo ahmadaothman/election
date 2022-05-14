@@ -78,6 +78,11 @@ Route::get('/api/countries_results', [App\Http\Controllers\ApiController::class,
 Route::get('/SortCountriesResults', [App\Http\Controllers\ElectorsController::class, 'sortCountries'])->name('SortCountriesResults');
 Route::post('/saveCountryResult', [App\Http\Controllers\ElectorsController::class, 'saveCountryResult'])->name('saveCountryResult');
 
+Route::get('/SortResults', [App\Http\Controllers\ElectorsController::class, 'sortResults'])->name('sortResults');
+Route::post('/saveSortResults', [App\Http\Controllers\ElectorsController::class, 'saveSortResults'])->name('saveSortResults');
+Route::post('/getVotesByData', [App\Http\Controllers\ElectorsController::class, 'getVotesByData'])->name('getVotesByData');
+
+
 
 Route::get('/electors/mobile', [App\Http\Controllers\MobileController::class, 'electorsMobile'])->name('electors_mobile');
 Route::get('/electors/data_by_user', [App\Http\Controllers\MobileController::class, 'getElectorsByUser'])->name('electors_by_user');

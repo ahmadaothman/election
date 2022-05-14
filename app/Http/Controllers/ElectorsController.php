@@ -118,6 +118,37 @@ class ElectorsController extends Controller
         return view('sort_countries_form',$data);
     }
 
+    public function sortResults(){
+        $data = array();
+        $data['districts'] = DB::select("SELECT DISTINCT district FROM electors");
+        $data['candidates'] = Concadidates::orderBy('sort_order')->get();
+        
+        return view('sort_results',$data);
+    }
+
+    public function saveSortResults(Request $request){
+        Votes::insert([
+            'election_center'   =>  $request->post('center'),
+            'district'          =>  $request->post('district'),
+            'ballot_pen'        =>  $request->post('ballot_pen'),
+            'candidate_id'      =>  $request->post('candidate_id'),
+            'user_id'           =>  Auth::id(),
+            'is_country'        =>  0
+        ]);
+
+        return array('success'=>true);
+    }
+
+    public function getVotesByData(Request $request){
+        $sql = "SELECT c.name as name,COUNT(*) as count FROM votes v LEFT JOIN candidates c ON c.id=v.candidate_id WHERE 
+        v.election_center='" . $request->post('center') . "' AND v.district='" . $request->post('district') . "' AND v.ballot_pen='" . $request->post('ballot_pen') . "' 
+        GROUP BY c.name ORDER BY c.sort_order";
+ 
+
+        $data = DB::select($sql);
+        return $data;
+    }
+
     public function saveCountryResult(Request $request){
         Votes::insert([
             'election_center'   =>  $request->post('country'),
