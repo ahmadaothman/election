@@ -19,13 +19,13 @@ class UsersController extends Controller
     public function list(){
         $data = array();
         $data['users'] = User::where('position','!=','')->get();
-
+      
         return view('user_list',$data);
     }
 
     public function add(Request $request){
         $data = array();
-        
+        $data['user_type'] = '';
         $data['districts'] = DB::select("SELECT DISTINCT district FROM electors");
 
         $data['types'] = array(
