@@ -15,7 +15,7 @@
     <div class="row m-2">
       <div class="col-sm-6 border p-2 text-center">
         <h3 class="mb-3">الاصوات التي نالها المرشح النائب سامي فتفت</h3>
-        <strong class="h4 bg-primary px-4 text-white rounded py-1 " id="total_sami">74,665</strong>
+        <strong class="h4 bg-primary px-4 text-white rounded py-1 " id="total_sami">0</strong>
         <hr>
         <div class="row" id="sami_restuls_by_disteict">
 
