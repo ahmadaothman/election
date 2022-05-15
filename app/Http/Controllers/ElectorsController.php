@@ -159,8 +159,7 @@ class ElectorsController extends Controller
     public function getVotesByData(Request $request){
         $sql = "SELECT c.name as name,COUNT(*) as count FROM votes v LEFT JOIN candidates c ON c.id=v.candidate_id WHERE 
         v.election_center='" . $request->post('center') . "' AND v.district='" . $request->post('district') . "' AND v.ballot_pen='" . $request->post('ballot_pen') . "' 
-        GROUP BY c.name ORDER BY c.sort_order";
- 
+        GROUP BY c.name ";
 
         $data = DB::select($sql);
         return $data;
