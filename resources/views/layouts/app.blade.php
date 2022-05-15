@@ -54,7 +54,7 @@
                             <a class="nav-link mx-4" href="/ConcadidatesLists">المرشحين</a>
                         </li>
                 
-                        <li class="nav-item active hide-for-it">
+                        <li class="nav-item active ">
                             <a class="nav-link mx-4" href="/SortResults">فرز النتائج</a>
                         </li>
                         <li class="nav-item active hide-for-it">
