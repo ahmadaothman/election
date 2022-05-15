@@ -54,7 +54,7 @@
       success:function(data){
         $('#total_sami').html(data.total_sami + ' - ' + data.total_sami_percantage + ' %')
         $('#sami_restuls_by_disteict').empty();
-        
+
         $('#total').html(data.total_votes);
 
         $.each(data.sami_district_total,function(k,v){
@@ -117,5 +117,9 @@
   }
 
   getData()
+
+  setInterval(function() {
+                  window.location.reload();
+                }, 300000);
 </script>
 @endsection

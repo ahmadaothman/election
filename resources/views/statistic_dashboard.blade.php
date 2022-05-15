@@ -122,7 +122,7 @@
         $.each(data,function(k,v){
     
           html = '<div class="col-sm-3 h-6" style="margin-bottom:5px"><strong>'+v.town +'</strong></div>'
-          html += '<div class="col-sm-3 h-6">'+ v.total_voted + ' - ' + v.voted_percentage_from_total_voters + '%' +'</div>'
+          html += '<div class="col-sm-3 h-6 p-0">'+ v.total_voted + ' - ' + v.voted_percentage_from_total_voters + '%' +'</div>'
 
           $('#total_by_towns').append(html);
         })
