@@ -128,9 +128,9 @@ class ElectorsController extends Controller
 
     public function saveSortResults(Request $request){
         Votes::insert([
-            'election_center'   =>  $request->post('center'),
+            'election_center'   =>  $request->post('center') ? $request->post('center') : '',
             'district'          =>  $request->post('district'),
-            'ballot_pen'        =>  $request->post('ballot_pen'),
+            'ballot_pen'        =>  $request->post('ballot_pen') ? $request->post('ballot_pen') : '',
             'candidate_id'      =>  $request->post('candidate_id'),
             'user_id'           =>  Auth::id(),
             'is_country'        =>  0

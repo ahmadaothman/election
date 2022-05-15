@@ -23,6 +23,8 @@
                 @foreach ($districts as $district)
                 <option value="{{$district->district}}" >{{$district->district}}</option>
                 @endforeach
+                <option value="مغتربين">مغتربين</option>
+                <option value="اساتذة">اساتذة</option>
             </select>
 
 
