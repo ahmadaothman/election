@@ -285,7 +285,7 @@ class StatisticDashboardController extends Controller
         $data = DB::select($sql);
         $results['total_sami'] = number_format($data[0]->count);
 
-        $results['total_sami_percantage'] = number_format(100*$results['total_sami']/$results['total_votes'],2);
+        $results['total_sami_percantage'] = $this->numberPrecision(100*$results['total_sami']/$results['total_votes'],1);
 
         $sql = "SELECT district,COUNT(*) as count FROM votes WHERE is_country=0 AND candidate_id=11 GROUP BY district";
 
