@@ -175,9 +175,9 @@
 
   }
 
-  var intervalId = window.setInterval(function(){
-    getData()
-  }, 3000000);
+  setInterval(function() {
+                  window.location.reload();
+                }, 300000);
 </script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
 
