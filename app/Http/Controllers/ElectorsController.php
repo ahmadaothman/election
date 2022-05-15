@@ -127,14 +127,31 @@ class ElectorsController extends Controller
     }
 
     public function saveSortResults(Request $request){
-        Votes::insert([
+        /*Votes::insert([
             'election_center'   =>  $request->post('center') ? $request->post('center') : '',
             'district'          =>  $request->post('district'),
             'ballot_pen'        =>  $request->post('ballot_pen') ? $request->post('ballot_pen') : '',
             'candidate_id'      =>  $request->post('candidate_id'),
             'user_id'           =>  Auth::id(),
             'is_country'        =>  0
-        ]);
+        ]);*/
+
+        Votes::where('election_center',$request->post('center') ? $request->post('center') : '')
+        ->where('district',$request->post('district'))
+        ->where('ballot_pen',$request->post('ballot_pen') ? $request->post('ballot_pen') : '')
+        ->where('candidate_id',$request->post('candidate_id'))
+        ->delete();
+
+        for($i=0;$i<(int)$request->post('number');$i++){
+            Votes::insert([
+                'election_center'   =>  $request->post('center') ? $request->post('center') : '',
+                'district'          =>  $request->post('district'),
+                'ballot_pen'        =>  $request->post('ballot_pen') ? $request->post('ballot_pen') : '',
+                'candidate_id'      =>  $request->post('candidate_id'),
+                'user_id'           =>  Auth::id(),
+                'is_country'        =>  0
+            ]);
+        }
 
         return array('success'=>true);
     }

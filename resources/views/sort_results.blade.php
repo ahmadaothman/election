@@ -50,6 +50,10 @@
                 @endforeach
             </select>
         </div>
+        <div class="col-2 mb-4">
+            <label for="number">مجموع الاصوات</label>
+            <input type="number" id="number" name="number" class="form-control"/>
+        </div>
         <div class="col-2 ">
             <label for="name"></label>
             <br>
@@ -150,7 +154,8 @@
                 district:$('#district').val(),
                 center:$('#election_center').val(),
                 ballot_pen:$('#ballot_pen').val(),
-                candidate_id:$('#candidate').val()
+                candidate_id:$('#candidate').val(),
+                number:$('#number').val()
             },
             success:function(data){
                 $('#save').html('حفظ');
