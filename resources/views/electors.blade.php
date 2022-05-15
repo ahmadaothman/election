@@ -161,8 +161,8 @@
                 allowEditing: false
             },
             {
-                caption: 'الهاتف',
-                dataField:'telephone'
+                caption: 'lastname',
+                dataField:'lastname'
             },
             {
                 caption: 'تاريخ الولادة',
