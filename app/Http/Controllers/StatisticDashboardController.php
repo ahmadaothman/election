@@ -259,7 +259,48 @@ class StatisticDashboardController extends Controller
 
     public function results(Request $request){
         $data = array();
-        return View('results',$data);
+        $sql = "SELECT COUNT(*) as count FROM votes WHERE is_country=0";
+        $data = DB::select($sql);
+
+        $results = array();
+        $results['total_votes'] = $data[0]->count;
+
+        $sql = "SELECT COUNT(*) as count FROM votes WHERE is_country=0 AND candidate_id=11";
+        $data = DB::select($sql);
+        $results['total_sami'] = number_format($data[0]->count);
+
+        return View('results',$results);
+    }
+
+    public function resultsApi(Request $request){
+        $data = array();
+
+        $sql = "SELECT COUNT(*) as count FROM votes WHERE is_country=0";
+        $data = DB::select($sql);
+
+        $results = array();
+        $results['total_votes'] = number_format($data[0]->count);
+
+        $sql = "SELECT COUNT(*) as count FROM votes WHERE is_country=0 AND candidate_id=11";
+        $data = DB::select($sql);
+        $results['total_sami'] = number_format($data[0]->count);
+
+        $results['total_sami_percantage'] = number_format(100*$results['total_sami']/$results['total_votes'],2);
+
+        $sql = "SELECT district,COUNT(*) as count FROM votes WHERE is_country=0 AND candidate_id=11 GROUP BY district";
+
+        $data = DB::select($sql);
+        $results['sami_district_total'] = $data;
+
+
+        return $results;
+    }
+
+    public function resultsApiDataForEachConcadidate(Request $request){
+        $sql = "SELECT c.name as name,COUNT(*) as count FROM votes v LEFT JOIN candidates c ON c.id=v.candidate_id GROUP BY c.name";
+        $data = DB::select($sql);
+        
+        return $data;
     }
 
 }

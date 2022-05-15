@@ -104,3 +104,6 @@ Route::get('/statistic/sex', [App\Http\Controllers\StatisticDashboardController:
 
 
 Route::get('/results', [App\Http\Controllers\StatisticDashboardController::class, 'results'])->name('results');
+Route::get('/resultsApi', [App\Http\Controllers\StatisticDashboardController::class, 'resultsApi'])->name('resultsApi');
+Route::get('/resultsApiDataForEachConcadidate', [App\Http\Controllers\StatisticDashboardController::class, 'resultsApiDataForEachConcadidate'])->name('resultsApiDataForEachConcadidate');
+

@@ -11,8 +11,21 @@
         </div>
     </div>
     <hr>
-    <h3 class="text-center">نتائج فرز الاصوات في الضنية</h3>
+    <h3 class="text-center">اجمالي الاصوات المحتسبة <strong id="total"></strong></h3>
+    <div class="row m-2">
+      <div class="col-sm-6 border p-2 text-center">
+        <h3 class="mb-3">الاصوات التي نالها المرشح النائب سامي فتفت</h3>
+        <strong class="h4 bg-primary px-4 text-white rounded py-1 " id="total_sami">74,665</strong>
+        <hr>
+        <div class="row" id="sami_restuls_by_disteict">
 
+        </div>
+       
+      </div>
+      <div class="col-sm-6 border p-2">
+        <div id="total_for_each"></div>
+      </div>
+    </div>
   
 </div>
 
@@ -33,4 +46,76 @@
   color: black !important;
 }
 </style>  
+<script type="text/javascript">
+  function getData(){
+    $.ajax({
+      url:'/resultsApi',
+      type:'get',
+      success:function(data){
+        $('#total_sami').html(data.total_sami + ' - ' + data.total_sami_percantage + ' %')
+        $('#sami_restuls_by_disteict').empty();
+        
+        $('#total').html(data.total_votes);
+
+        $.each(data.sami_district_total,function(k,v){
+          html = '<div class="col-sm-4 mb-2"><strong>';
+          html += '<table class="table">'
+          html += '<tr>'
+          html += '<td>' + v.district + '</td>'
+          html += '<td>' + v.count + '</td>'
+          html += '</tr>'
+          html += '</table>'
+          html += '</strong</div>'
+        
+          $('#sami_restuls_by_disteict').append(html )
+        })
+      }
+    });
+
+    ///resultsApiDataForEachConcadidate
+    $('#total_for_each').dxChart({
+        rotated: false,
+        dataSource: '/resultsApiDataForEachConcadidate',
+        series: {
+        label: {
+            visible: true,
+            backgroundColor: '#c18e92',
+        },
+        size:{
+          height: 300,
+          width: 200
+        },
+        color: '#79cac4',
+        type: 'bar',
+        argumentField: 'name',
+        valueField: 'count',
+        },
+        title: 'الناخبين حسب البلدات',
+        argumentAxis: {
+        label: {
+            customizeText() {
+            return `${this.valueText}`;
+            },
+        },
+        },
+        valueAxis: {
+        tick: {
+            visible: false,
+        },
+        label: {
+            visible: false,
+        },
+        },
+        export: {
+        enabled: true,
+        },
+        legend: {
+        visible: false,
+        },
+       
+    });
+  }
+
+  getData()
+</script>
 @endsection
