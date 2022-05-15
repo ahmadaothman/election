@@ -208,4 +208,21 @@ class ElectorsController extends Controller
         }
        
     }
+
+    public function getTotalByPen(Request $request){
+        if($request->method() == 'POST'){
+            $data = Electors::where('election_center',$request->post('center'))
+            ->where('district',$request->post('district'))
+            ->where('ballot_pen',$request->post('ballot_pen'))
+            ->where('done',1)->count();
+            return $data;
+        }else{
+            $data = array();
+            $data = array();
+            $data['districts'] = DB::select("SELECT DISTINCT district FROM electors");
+            
+            return view('get_data_by_pen',$data);
+        }
+       
+    }
 }

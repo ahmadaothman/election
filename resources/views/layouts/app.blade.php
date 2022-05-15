@@ -60,6 +60,10 @@
                         <li class="nav-item active hide-for-it">
                             <a class="nav-link mx-4" href="/UsersLists">المندوبين</a>
                         </li>
+                       
+                        <li class="nav-item active hide-for-it">
+                            <a class="nav-link mx-4" href=" /getTotalByPen">مجموع الاقتراع في كل قلم</a>
+                        </li>
                     </ul>
                     @endif
                     <!--a->

@@ -45,6 +45,11 @@ Route::post('/electors/electoresNumbers', [App\Http\Controllers\ElectorsControll
 Route::get('/print', [App\Http\Controllers\ElectorsController::class, 'print'])->name('print');
 Route::post('/print', [App\Http\Controllers\ElectorsController::class, 'print'])->name('print');
 
+Route::get('/getTotalByPen', [App\Http\Controllers\ElectorsController::class, 'getTotalByPen'])->name('getTotalByPen');
+Route::post('/getTotalByPen', [App\Http\Controllers\ElectorsController::class, 'getTotalByPen'])->name('getTotalByPen');
+
+
+
 
 
 
